@@ -5,12 +5,13 @@ import com.ivans.webshop.repository.enums.UserState;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
         discriminatorType = DiscriminatorType.INTEGER,
-        name = "user_type"
+        name = "type"
 )
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,10 +23,10 @@ public class User {
     @Column(length = 15 )
     private UserState state;
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(Integer id, String firstName, String lastName, String username, String password, UserState state) {
+    public UserEntity(Integer id, String firstName, String lastName, String username, String password, UserState state) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,7 +35,7 @@ public class User {
         this.state = state;
     }
 
-    public User(String firstName, String lastName, String username, String password, UserState state) {
+    public UserEntity(String firstName, String lastName, String username, String password, UserState state) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -42,7 +43,7 @@ public class User {
         this.state = state;
     }
 
-    public User(String firstName, String lastName, String username, String password) {
+    public UserEntity(String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;

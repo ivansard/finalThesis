@@ -1,9 +1,9 @@
 package com.ivans.webshop.controllers;
 
-import com.ivans.webshop.repository.entity.Company;
+import com.ivans.webshop.repository.entity.CompanyEntity;
 import com.ivans.webshop.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,7 +13,28 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
-    public List<Company> getAllCompanies(){
+    @GetMapping(value = "/companies")
+    public List<CompanyEntity> getAllCompanies() {
         return companyService.getAllCompanies();
+    }
+
+    @GetMapping(value = "/companies/{id}")
+    public CompanyEntity getCompanyById(@PathVariable Integer id) {
+        return companyService.getCompanyById(id);
+    }
+
+    @PostMapping(value = "/companies")
+    public void addCompany(@RequestBody CompanyEntity company) {
+        companyService.addCompany(company);
+    }
+
+    @PutMapping(value = "/companies/{id}")
+    public void deleteCompany(@RequestBody CompanyEntity company, @PathVariable Integer id) {
+        companyService.updateCompany(company, id);
+    }
+
+    @DeleteMapping(value = "/companies/{id}")
+    public void deleteCompany(@PathVariable Integer id) {
+        companyService.deleteCompany(id);
     }
 }

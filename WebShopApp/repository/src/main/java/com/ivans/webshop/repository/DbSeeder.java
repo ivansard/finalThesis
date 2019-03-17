@@ -1,9 +1,10 @@
 package com.ivans.webshop.repository;
 
-import com.ivans.webshop.repository.entity.CompanyUser;
-import com.ivans.webshop.repository.entity.User;
-import com.ivans.webshop.repository.entity.WebUser;
+import com.ivans.webshop.repository.entity.*;
+import com.ivans.webshop.repository.enums.ProductCategory;
 import com.ivans.webshop.repository.enums.UserState;
+import com.ivans.webshop.repository.repo.CompanyRepo;
+import com.ivans.webshop.repository.repo.ProductRepo;
 import com.ivans.webshop.repository.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,28 +16,53 @@ import java.util.List;
 @Component
 public class DbSeeder implements CommandLineRunner {
 
-    private UserRepo userRepo;
-
     @Autowired
-    public DbSeeder(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
+    private UserRepo userRepo;
+    @Autowired
+    private CompanyRepo companyRepo;
+    @Autowired
+    private ProductRepo productRepo;
+
 
     @Override
     public void run(String... args) throws Exception {
-//        CompanyUser c1 = new CompanyUser("Milka", "Canic", "srda", "123", UserState.New);
-//        CompanyUser c2 = new CompanyUser("Pera", "Peric", "pera", "123", UserState.New);
-//        WebUser w1 = new WebUser("Mita", "Mitic", "mita", "123", UserState.New);
-////        CompanyUser c2 = new CompanyUser();
-////        WebUser w1 = new WebUser();
-//
-//
-//        List<User> users = new ArrayList<>();
-//        users.add(c1);
-//        users.add(c2);
-//        users.add(w1);
-//
-//        userRepo.saveAll(users);
+
+        CompanyEntity com1 = new CompanyEntity("Serbia", "Belgrade", "Nordeus");
+        CompanyEntity com2 = new CompanyEntity("Serbia", "Belgrade", "7 Bridges Genomics");
+        CompanyEntity com3 = new CompanyEntity("Serbia", "Belgrade", "Saga");
+
+
+        CompanyUserEntity c1 = new CompanyUserEntity("Milka", "Canic", "srda", "123", UserState.New);
+        CompanyUserEntity c2 = new CompanyUserEntity("Pera", "Peric", "pera", "123", UserState.New);
+        WebUserEntity w1 = new WebUserEntity("Mita", "Mitic", "mita", "123", UserState.New);
+
+        ProductEntity p1 = new ProductEntity("Kimono", 290, 0.4, 0.1, ProductCategory.SPORT, com1);
+        ProductEntity p4 = new ProductEntity("Rukavice", 290, 0.4, 0.1, ProductCategory.SPORT, com1);
+        ProductEntity p2 = new ProductEntity("Gitara", 290, 0.4, 0.1, ProductCategory.INSTRUMENTS, com2);
+        ProductEntity p3 = new ProductEntity("Knjiga", 290, 0.4, 0.1, ProductCategory.BOOKS, com3);
+
+        c1.setCompany(com1);
+        c2.setCompany(com2);
+
+        List<UserEntity> users = new ArrayList<UserEntity>();
+        users.add(c1);
+        users.add(c2);
+        users.add(w1);
+
+        List<CompanyEntity> companies = new ArrayList<CompanyEntity>();
+        companies.add(com1);
+        companies.add(com2);
+        companies.add(com3);
+
+        List<ProductEntity> products = new ArrayList<ProductEntity>();
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+        products.add(p4);
+
+        companyRepo.saveAll(companies);
+        userRepo.saveAll(users);
+        productRepo.saveAll(products);
 
     }
 }
