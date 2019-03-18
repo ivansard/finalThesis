@@ -27,9 +27,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<ProductEntity> getProductsByCompany(Integer companyId) {
-        return productRepo.findByCompany(companyId);
+    public List<ProductEntity> getProductsByCompanyName(String companyName) {
+        return productRepo.findByCompanyName(companyName);
     }
+
 
     @Override
     public List<ProductEntity> getProductsByName(String productName) {

@@ -9,13 +9,9 @@ import org.mapstruct.MappingTarget;
 import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
-public abstract class CompanyUserMapper {
+public interface CompanyUserMapper {
 
     @Mapping(target = "name", expression = "java(companyUser.getFirstName() + \" \" + companyUser.getLastName())")
-    public abstract CompanyUserDTO companyUser2DTO (CompanyUserEntity companyUser);
+    CompanyUserDTO companyUser2DTO (CompanyUserEntity companyUser);
 
-//    @AfterMapping
-//    public void ignoreFathersChildren(CompanyUserEntity companyUser, @MappingTarget CompanyUserDTO companyUserDTO) {
-////        companyUserDTO.getCompany().setCompanyUsers(null);
-//    }
 }

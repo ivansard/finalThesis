@@ -34,9 +34,9 @@ public class ProductController {
         return productService.getProductsByCategory(category);
     }
 
-    @GetMapping(value = "/products/search/company/{companyId}")
-    public List<ProductEntity> getProductsByCompany(@PathVariable Integer companyId) {
-        return productService.getProductsByCompany(companyId);
+    @GetMapping(value = "/products/search/company/{companyName}")
+    public List<ProductEntity> getProductsByCompany(@PathVariable String companyName) {
+        return productService.getProductsByCompanyName(companyName);
     }
 
     @GetMapping(value = "/products/search/name/{productName}")

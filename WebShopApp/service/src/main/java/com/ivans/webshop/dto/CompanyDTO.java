@@ -8,7 +8,6 @@ public class CompanyDTO {
     private String country;
     private String city;
     private String name;
-//    private List<CompanyUserDTO> companyUsers = new ArrayList<CompanyUserDTO>();
     private List<ProductDTO> products = new ArrayList<ProductDTO>();
 
     public CompanyDTO() {
@@ -46,13 +45,13 @@ public class CompanyDTO {
 //        this.companyUsers = companyUsers;
 //    }
 
-    public List<ProductDTO> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<ProductDTO> products) {
-        this.products = products;
-    }
+//    public List<ProductDTO> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(List<ProductDTO> products) {
+//        this.products = products;
+//    }
 
 
 }

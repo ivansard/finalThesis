@@ -28,38 +28,38 @@ public class WebshopApplication {
 
     public static void main(String[] args) {
 
-        CompanyEntity company = new CompanyEntity("Serbia", "Belgrade", "Levi9");
-
-        CompanyUserEntity user = new CompanyUserEntity("Pera", "Peric", "rape", "123", UserState.New);
-        CompanyUserEntity user2 = new CompanyUserEntity("Ivan", "Peric", "ivan", "123", UserState.New);
-        user.setCompany(company);
-
-        List<CompanyUserEntity> companyUsers = new ArrayList<CompanyUserEntity>();
-        companyUsers.add(user);
-        companyUsers.add(user2);
-
-        company.setCompanyUsers(companyUsers);
-
-
-        CompanyUserMapper mapper = Mappers.getMapper(CompanyUserMapper.class);
-        CompanyMapper comMapper =  Mappers.getMapper(CompanyMapper.class);
-
+//        CompanyEntity company = new CompanyEntity("Serbia", "Belgrade", "Levi9");
+//
+//        CompanyUserEntity user = new CompanyUserEntity("Pera", "Peric", "rape", "123", UserState.New);
+//        CompanyUserEntity user2 = new CompanyUserEntity("Ivan", "Peric", "ivan", "123", UserState.New);
+//        user.setCompany(company);
+//
+//        List<CompanyUserEntity> companyUsers = new ArrayList<CompanyUserEntity>();
+//        companyUsers.add(user);
+//        companyUsers.add(user2);
+//
+//        company.setCompanyUsers(companyUsers);
+//
+//
+//        CompanyUserMapper mapper = Mappers.getMapper(CompanyUserMapper.class);
+//        CompanyMapper comMapper =  Mappers.getMapper(CompanyMapper.class);
+//
+////        CompanyUserDTO dto = mapper.companyUser2DTO(user);
+////
+////        System.out.println(dto.getName());
+////        System.out.println(dto.getUsername());
+////        System.out.println(dto.getCompany().getCountry());
+//
+//        CompanyDTO comDTO = comMapper.company2DTO(company);
+//
+//        System.out.println(comDTO.getName());
+//        System.out.println(comDTO.getCountry());
+//
 //        CompanyUserDTO dto = mapper.companyUser2DTO(user);
 //
 //        System.out.println(dto.getName());
 //        System.out.println(dto.getUsername());
 //        System.out.println(dto.getCompany().getCountry());
-
-        CompanyDTO comDTO = comMapper.company2DTO(company);
-
-        System.out.println(comDTO.getName());
-        System.out.println(comDTO.getCountry());
-
-        CompanyUserDTO dto = mapper.companyUser2DTO(user);
-
-        System.out.println(dto.getName());
-        System.out.println(dto.getUsername());
-        System.out.println(dto.getCompany().getCountry());
 
 
 
