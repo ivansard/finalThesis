@@ -1,19 +1,26 @@
 package com.ivans.webshop.service.interfaces;
 
+import com.ivans.webshop.dto.AccountDTO;
+import com.ivans.webshop.repository.entity.AccountEntity;
+import com.ivans.webshop.repository.entity.UserEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface IAccountService {
 
+    List<AccountDTO> getAllAccounts();
 
+    AccountDTO getAccountById(Integer id) throws Exception;
 
-//    private
-//    Integer id;
-//    private String name;
-//    private boolean isClosed = false;
-//    private LocalDate opened;
-//    private LocalDate closed;
-//    private WebUserEntity user;
-//    private List<PaymentDetailsEntity> paymentDetails = new ArrayList<PaymentDetailsEntity>();
-//    private List<OrderEntity> orders = new ArrayList<OrderEntity>();
+    AccountDTO getAccountByUsername(String username) throws Exception;
+
+    AccountEntity updateAccount(AccountEntity user, Integer id) throws Exception;
+
+    AccountEntity updateAccount(AccountEntity user, String username) throws Exception;
+
+    void deleteAccount(String username) throws Exception;
+
+    void deleteAccount(Integer id) throws Exception;
 }

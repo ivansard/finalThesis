@@ -37,21 +37,6 @@ public class CompanyDTO {
         this.name = name;
     }
 
-//    public List<CompanyUserDTO> getCompanyUsers() {
-//        return companyUsers;
-//    }
-//
-//    public void setCompanyUsers(List<CompanyUserDTO> companyUsers) {
-//        this.companyUsers = companyUsers;
-//    }
-
-//    public List<ProductDTO> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<ProductDTO> products) {
-//        this.products = products;
-//    }
 
 
 }

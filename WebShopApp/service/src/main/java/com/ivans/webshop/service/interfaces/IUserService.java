@@ -14,11 +14,11 @@ public interface IUserService {
 
     UserEntity getUserById(Integer id);
 
-    void addUser(UserEntity user);
+    UserEntity addUser(UserEntity user);
 
-    void updateUser(UserEntity user, Integer id);
+    UserEntity updateUser(UserEntity user, Integer id) throws Exception;
 
-    void deleteUser(Integer id);
+    void deleteUser(Integer id) throws Exception;
 
 
 }

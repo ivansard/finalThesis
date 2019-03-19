@@ -2,6 +2,7 @@ package com.ivans.webshop.repository.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "payments")
@@ -10,7 +11,8 @@ public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDate paid;
+    @Temporal(TemporalType.DATE)
+    private Date paidDate;
     private double total;
     private String details;
     @OneToOne(mappedBy = "payment")
@@ -28,12 +30,16 @@ public class PaymentEntity {
         this.id = id;
     }
 
-    public LocalDate getPaid() {
-        return paid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setPaid(LocalDate paid) {
-        this.paid = paid;
+    public Date getPaidDate() {
+        return paidDate;
+    }
+
+    public void setPaidDate(Date paidDate) {
+        this.paidDate = paidDate;
     }
 
     public double getTotal() {

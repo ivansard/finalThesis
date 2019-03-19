@@ -13,6 +13,7 @@ public class PaymentDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String cardNumber;
+    @Temporal(TemporalType.DATE)
     private LocalDate expirationDate;
     private String securityCode;
     @OneToMany(mappedBy = "paymentDetails")

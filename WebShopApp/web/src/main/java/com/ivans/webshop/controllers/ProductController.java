@@ -53,13 +53,21 @@ public class ProductController {
         }
     }
 
-    @PatchMapping(value = "/products/{productId}")
+    @PutMapping(value = "/products/{productId}")
     public ProductEntity updateProduct(@RequestBody ProductEntity product, @PathVariable Integer productId) {
-        return productService.updateProduct(product, productId);
+        try{
+            return productService.updateProduct(product, productId);
+        } catch (Exception ex){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product with submitted ID does not exist", ex);
+        }
     }
 
     @DeleteMapping(value = "/products/{productId}")
     public void deleteProduct(@PathVariable Integer productId) {
-        productService.deleteProduct(productId);
+        try{
+            productService.deleteProduct(productId);
+        } catch (Exception ex){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product with submitted ID does not exist", ex);
+        }
     }
 }

@@ -6,4 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepo extends JpaRepository<AccountEntity, Integer> {
+
+
+    AccountEntity findByUserUsername(String username);
+
+
+
 }

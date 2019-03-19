@@ -1,5 +1,7 @@
 package com.ivans.webshop.services;
 
+import com.ivans.webshop.dto.OrderDTO;
+import com.ivans.webshop.mappers.OrderMapper;
 import com.ivans.webshop.repository.entity.OrderEntity;
 import com.ivans.webshop.repository.enums.OrderStatus;
 import com.ivans.webshop.repository.repo.OrderRepo;
@@ -7,23 +9,67 @@ import com.ivans.webshop.service.interfaces.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService implements IOrderService {
 
     @Autowired
     private OrderRepo orderRepo;
+    @Autowired
+    private OrderMapper orderMapper;
 
-    public List<OrderEntity> getAllOrders(){
-        return orderRepo.findAll();
+    public List<OrderDTO> getAllOrders(){
+        List<OrderEntity> orderEntities = orderRepo.findAll();
+        List<OrderDTO> orderDtos = new ArrayList<OrderDTO>();
+        for (OrderEntity orderEntity: orderEntities) {
+            orderDtos.add(orderMapper.order2DTO(orderEntity));
+        }
+        return orderDtos;
     }
 
-    public OrderEntity getOrderById(Integer id) throws Exception {
+    public List<OrderDTO> getByOrderDate(LocalDate ordered){
+        List<OrderEntity> orderEntities = orderRepo.findByOrdered(ordered);
+        List<OrderDTO> orderDtos = new ArrayList<OrderDTO>();
+        for (OrderEntity orderEntity: orderEntities) {
+            orderDtos.add(orderMapper.order2DTO(orderEntity));
+        }
+        return orderDtos;
+    }
+
+    public List<OrderDTO> getByShippedDate(LocalDate shipped){
+        List<OrderEntity> orderEntities = orderRepo.findByShipped(shipped);
+        List<OrderDTO> orderDtos = new ArrayList<OrderDTO>();
+        for (OrderEntity orderEntity: orderEntities) {
+            orderDtos.add(orderMapper.order2DTO(orderEntity));
+        }
+        return orderDtos;
+    }
+
+    public List<OrderDTO> getByStatus(OrderStatus status){
+        List<OrderEntity> orderEntities = orderRepo.findByStatus(status);
+        List<OrderDTO> orderDtos = new ArrayList<OrderDTO>();
+        for (OrderEntity orderEntity: orderEntities) {
+            orderDtos.add(orderMapper.order2DTO(orderEntity));
+        }
+        return orderDtos;
+    }
+
+    public List<OrderDTO> getByAccountId(Integer accountId){
+        List<OrderEntity> orderEntities = orderRepo.findByAccountId(accountId);
+        List<OrderDTO> orderDtos = new ArrayList<OrderDTO>();
+        for (OrderEntity orderEntity: orderEntities) {
+            orderDtos.add(orderMapper.order2DTO(orderEntity));
+        }
+        return orderDtos;
+    }
+
+    public OrderDTO getOrderById(Integer id) throws Exception {
         OrderEntity order = orderRepo.findById(id).orElse(null);
         if (order.equals(null)) {
             throw new Exception("Order with submitted ID does not exist");
         }
-        return order;
+        return orderMapper.order2DTO(order);
     }
 
     public OrderEntity updateOrder(OrderEntity order, Integer id) throws Exception {
@@ -43,27 +89,11 @@ public class OrderService implements IOrderService {
         orderRepo.deleteById(id);
     }
 
-    public List<OrderEntity> getByOrderDate(LocalDate ordered){
-        return orderRepo.findByOrdered(ordered);
-    }
-
-    public List<OrderEntity> getByShippedDate(LocalDate shipped){
-        return orderRepo.findByShipped(shipped);
-    }
-
-    public List<OrderEntity> getByStatus(OrderStatus status){
-        return orderRepo.findByStatus(status);
-    }
-
-    public List<OrderEntity> getByAccountId(Integer accountId){
-        return orderRepo.findByAccountId(accountId);
-    }
-
-    public OrderEntity getByPaymentId(Integer paymentId) throws Exception {
+    public OrderDTO getByPaymentId(Integer paymentId) throws Exception {
         OrderEntity orderInDb = orderRepo.findByPaymentId(paymentId);
         if (orderInDb.equals(null)) {
             throw new Exception("Line item with submitted ID does not exist");
         }
-        return orderInDb;
+        return orderMapper.order2DTO(orderInDb);
     }
 }

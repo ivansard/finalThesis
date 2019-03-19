@@ -15,7 +15,9 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Temporal(TemporalType.DATE)
     private LocalDate ordered;
+    @Temporal(TemporalType.DATE)
     private LocalDate shipped;
     private OrderStatus status;
     private double total;

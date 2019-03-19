@@ -17,7 +17,7 @@ public interface IProductService {
 
     ProductEntity getProductById(Integer productId) throws Exception;
 
-    ProductEntity updateProduct(ProductEntity product, Integer productId);
+    ProductEntity updateProduct(ProductEntity product, Integer productId) throws Exception;
 
-    void deleteProduct(Integer productId);
+    void deleteProduct(Integer productId) throws Exception;
 }

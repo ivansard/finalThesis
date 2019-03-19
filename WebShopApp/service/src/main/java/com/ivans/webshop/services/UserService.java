@@ -1,5 +1,6 @@
 package com.ivans.webshop.services;
 
+import com.ivans.webshop.repository.entity.PaymentEntity;
 import com.ivans.webshop.repository.entity.UserEntity;
 import com.ivans.webshop.repository.repo.UserRepo;
 import com.ivans.webshop.service.interfaces.IUserService;
@@ -18,34 +19,34 @@ public class UserService implements IUserService {
         return userRepository.findAll();
     }
 
-//    @Override
-//    public List<UserEntity> getAllCompanyUsers() {
-//        return userRepository.findByType(2);
-//    }
-//
-//    @Override
-//    public List<UserEntity> getAllWebUsers() {
-//        return userRepository.findByType(1);
-//    }
-
     @Override
     public UserEntity getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void addUser(UserEntity user) {
-        userRepository.save(user);
+    public UserEntity addUser(UserEntity user) {
+        return userRepository.save(user);
     }
 
     @Override
-    public void updateUser(UserEntity user, Integer id) {
-        userRepository.save(user);
+    public UserEntity updateUser(UserEntity user, Integer userId) throws Exception {
+        UserEntity userInDb = userRepository.findById(userId).orElse(null);
+        if (userInDb.equals(null)) {
+            throw new Exception("User with submitted ID does not exist");
+        }
+        user.setId(userInDb.getId());
+        return userRepository.save(user);
     }
 
     @Override
-    public void deleteUser(Integer id) {
-        userRepository.deleteById(id);
+    public void deleteUser(Integer userId) throws Exception {
+        UserEntity userInDb = userRepository.findById(userId).orElse(null);
+        if (userInDb.equals(null)) {
+            throw new Exception("Payment with submitted ID does not exist");
+        }
+        userRepository.deleteById(userId);
+        return ;
     }
 
 

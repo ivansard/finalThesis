@@ -47,12 +47,22 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductEntity updateProduct(ProductEntity product, Integer productId) {
+    public ProductEntity updateProduct(ProductEntity product, Integer productId) throws Exception {
+        ProductEntity productInDb = productRepo.findById(productId).orElse(null);
+        if (productInDb.equals(null)) {
+            throw new Exception("Product with submitted ID does not exist");
+        }
+        product.setId(productInDb.getId());
         return productRepo.save(product);
     }
 
     @Override
-    public void deleteProduct(Integer productId) {
+    public void deleteProduct(Integer productId) throws Exception {
+        ProductEntity productInDb = productRepo.findById(productId).orElse(null);
+        if (productInDb.equals(null)) {
+            throw new Exception("Product with submitted ID does not exist");
+        }
         productRepo.deleteById(productId);
+        return;
     }
 }

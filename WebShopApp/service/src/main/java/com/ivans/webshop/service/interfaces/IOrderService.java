@@ -1,5 +1,6 @@
 package com.ivans.webshop.service.interfaces;
 
+import com.ivans.webshop.dto.OrderDTO;
 import com.ivans.webshop.repository.entity.OrderEntity;
 import com.ivans.webshop.repository.enums.OrderStatus;
 import org.springframework.stereotype.Service;
@@ -10,21 +11,21 @@ import java.util.List;
 @Service
 public interface IOrderService {
 
-    List<OrderEntity> getAllOrders();
+    List<OrderDTO> getAllOrders();
 
-    OrderEntity getOrderById(Integer id) throws Exception;
+    OrderDTO getOrderById(Integer id) throws Exception;
 
     OrderEntity updateOrder(OrderEntity order, Integer id) throws Exception;
 
     void deleteOrder(Integer id) throws Exception;
 
-    List<OrderEntity> getByOrderDate(LocalDate ordered);
+    List<OrderDTO> getByOrderDate(LocalDate ordered);
 
-    List<OrderEntity> getByShippedDate(LocalDate shipped);
+    List<OrderDTO> getByShippedDate(LocalDate shipped);
 
-    List<OrderEntity> getByStatus(OrderStatus status);
+    List<OrderDTO> getByStatus(OrderStatus status);
 
-    List<OrderEntity> getByAccountId(Integer accountId);
+    List<OrderDTO> getByAccountId(Integer accountId);
 
-    OrderEntity getByPaymentId(Integer paymentId) throws Exception;
+    OrderDTO getByPaymentId(Integer paymentId) throws Exception;
 }

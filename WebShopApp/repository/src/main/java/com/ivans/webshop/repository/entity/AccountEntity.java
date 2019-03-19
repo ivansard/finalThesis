@@ -15,7 +15,9 @@ public class AccountEntity {
     Integer id;
     private String name;
     private boolean isClosed = false;
+    @Temporal(TemporalType.DATE)
     private LocalDate opened;
+    @Temporal(TemporalType.DATE)
     private LocalDate closed;
     @OneToOne
     @JoinColumn(name = "user_id")
