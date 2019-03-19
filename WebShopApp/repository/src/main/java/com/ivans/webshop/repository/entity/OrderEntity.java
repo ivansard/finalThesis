@@ -1,6 +1,7 @@
 package com.ivans.webshop.repository.entity;
 
 import com.ivans.webshop.repository.enums.OrderStatus;
+import net.bytebuddy.implementation.bytecode.constant.IntegerConstant;
 
 import javax.persistence.*;
 import java.time.LocalDate;
