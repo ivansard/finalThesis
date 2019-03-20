@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface UserRepo extends JpaRepository<UserEntity, Integer> {
 
-//    List<UserEntity> findByType(Integer type);
 
 }

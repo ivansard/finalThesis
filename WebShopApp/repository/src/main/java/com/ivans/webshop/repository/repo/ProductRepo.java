@@ -17,4 +17,6 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
 
     List<ProductEntity> findByCompanyName(String companyName);
 
+    List<ProductEntity> findByProductName(String productName);
+
 }

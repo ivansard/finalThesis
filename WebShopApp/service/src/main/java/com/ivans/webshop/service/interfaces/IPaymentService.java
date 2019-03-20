@@ -1,28 +1,30 @@
 package com.ivans.webshop.service.interfaces;
 
+import com.ivans.webshop.dto.PaymentDTO;
 import com.ivans.webshop.repository.entity.PaymentEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public interface IPaymentService {
 
 
-    List<PaymentEntity> getAllPayments();
+    List<PaymentDTO> getAllPayments();
 
-    List<PaymentEntity> getPaymentsByPaymentDate(LocalDate date);
+    List<PaymentDTO> getPaymentsByPaymentDate(Date date);
 
-    List<PaymentEntity> getPaymentsByPaymentDetailsCardNumber(String cardNumber);
+    List<PaymentDTO> getPaymentsByPaymentDetailsCardNumber(String cardNumber);
 
-    PaymentEntity getPaymentById(Integer paymentId);
+    PaymentDTO getPaymentById(Integer paymentId) throws Exception;
 
-    PaymentEntity findByOrderId(Integer orderId);
+    PaymentDTO getByOrderId(Integer orderId) throws Exception;
 
-    PaymentEntity updatePayment(PaymentEntity payment, Integer paymentId);
+    PaymentEntity updatePayment(PaymentEntity payment, Integer paymentId) throws Exception;
 
-    void deletePayment(Integer paymentId);
+    void deletePayment(Integer paymentId) throws Exception;
 
 
 }

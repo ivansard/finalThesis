@@ -1,5 +1,8 @@
 package com.ivans.webshop.services;
 
+import com.ivans.webshop.dto.UserDTO;
+import com.ivans.webshop.mappers.UserMapper;
+import com.ivans.webshop.repository.entity.AccountEntity;
 import com.ivans.webshop.repository.entity.PaymentEntity;
 import com.ivans.webshop.repository.entity.UserEntity;
 import com.ivans.webshop.repository.repo.UserRepo;
@@ -7,6 +10,7 @@ import com.ivans.webshop.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,14 +18,25 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepo userRepository;
+    @Autowired
+    private UserMapper userMapper;
 
-    public List<UserEntity> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> getAllUsers() {
+        List<UserEntity> userEntities = userRepository.findAll();
+        List<UserDTO> userDTOs = new ArrayList<UserDTO>();
+        for (UserEntity userEntity: userEntities) {
+            userDTOs.add(userMapper.user2DTO(userEntity));
+        }
+        return userDTOs;
     }
 
     @Override
-    public UserEntity getUserById(Integer id) {
-        return userRepository.findById(id).orElse(null);
+    public UserDTO getUserById(Integer userId) throws Exception{
+        UserEntity user = userRepository.findById(userId).orElse(null);
+        if(user.equals(null)){
+            throw new Exception("Account with submitted ID does not exist");
+        }
+        return userMapper.user2DTO(user);
     }
 
     @Override

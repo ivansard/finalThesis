@@ -1,18 +1,15 @@
 package com.ivans.webshop.service.interfaces;
 
+import com.ivans.webshop.dto.UserDTO;
 import com.ivans.webshop.repository.entity.UserEntity;
 
 import java.util.List;
 
 public interface IUserService {
 
-    List<UserEntity> getAllUsers();
+    List<UserDTO> getAllUsers();
 
-//    List<UserEntity> getAllCompanyUsers();
-//
-//    List<UserEntity> getAllWebUsers();
-
-    UserEntity getUserById(Integer id);
+    UserDTO getUserById(Integer id) throws Exception;
 
     UserEntity addUser(UserEntity user);
 

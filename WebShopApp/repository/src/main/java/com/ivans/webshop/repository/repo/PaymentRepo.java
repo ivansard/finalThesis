@@ -14,6 +14,8 @@ public interface PaymentRepo extends JpaRepository<PaymentEntity, Integer> {
 
     List<PaymentEntity> findAllByPaidDateBetween(Date paidDateStart, Date paidDateEnd);
 
+    List<PaymentEntity> findByPaymentDetailsCardNumber(String cardNumber);
+
     PaymentEntity findByOrderId(Integer orderId);
 
 
