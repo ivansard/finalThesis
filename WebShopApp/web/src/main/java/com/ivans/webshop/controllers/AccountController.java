@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.AccountDTO;
 import com.ivans.webshop.repository.entity.AccountEntity;
 import com.ivans.webshop.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,12 @@ public class AccountController {
     private AccountService accountService;
 
 
-    public List<AccountEntity> getAllAccounts() {
+    public List<AccountDTO> getAllAccounts() {
         return accountService.getAllAccounts();
     }
 
     @GetMapping(value = "/accounts/{accountId}")
-    public AccountEntity getAccountById(@PathVariable Integer accountId) throws Exception {
+    public AccountDTO getAccountById(@PathVariable Integer accountId) throws Exception {
         try{
             return accountService.getAccountById(accountId);
         } catch (Exception ex){
@@ -30,7 +31,7 @@ public class AccountController {
     }
 
     @GetMapping(value = "/accounts/user{username}")
-    public AccountEntity getAccountByUsername(@PathVariable String username) throws Exception {
+    public AccountDTO getAccountByUsername(@PathVariable String username) throws Exception {
         try{
             return accountService.getAccountByUsername(username);
         } catch (Exception ex){

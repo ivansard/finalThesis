@@ -54,7 +54,7 @@ public class ProductService implements IProductService {
 
     @Override
     public List<ProductDTO> getProductsByName(String productName) {
-        List<ProductEntity> productEntities = productRepo.findByProductName(productName);
+        List<ProductEntity> productEntities = productRepo.findByName(productName);
         List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
         for (ProductEntity productEntity: productEntities) {
             productDTOs.add(productMapper.product2DTO(productEntity));

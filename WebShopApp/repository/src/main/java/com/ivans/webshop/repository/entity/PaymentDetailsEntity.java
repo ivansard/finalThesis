@@ -3,6 +3,7 @@ package com.ivans.webshop.repository.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ public class PaymentDetailsEntity {
     private Integer id;
     private String cardNumber;
     @Temporal(TemporalType.DATE)
-    private LocalDate expirationDate;
+    private Date expirationDate;
     private String securityCode;
     @OneToMany(mappedBy = "paymentDetails")
     private List<PaymentEntity> payments = new ArrayList<PaymentEntity>();
@@ -25,8 +26,7 @@ public class PaymentDetailsEntity {
     public PaymentDetailsEntity() {
     }
 
-    public PaymentDetailsEntity(int id, String cardNumber, LocalDate expirationDate, String securityCode, List<PaymentEntity> payments, AccountEntity account) {
-        this.id = id;
+    public PaymentDetailsEntity(String cardNumber, Date expirationDate, String securityCode, List<PaymentEntity> payments, AccountEntity account) {
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
@@ -34,7 +34,8 @@ public class PaymentDetailsEntity {
         this.account = account;
     }
 
-    public PaymentDetailsEntity(String cardNumber, LocalDate expirationDate, String securityCode, List<PaymentEntity> payments, AccountEntity account) {
+    public PaymentDetailsEntity(Integer id, String cardNumber, Date expirationDate, String securityCode, List<PaymentEntity> payments, AccountEntity account) {
+        this.id = id;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
@@ -58,12 +59,20 @@ public class PaymentDetailsEntity {
         this.cardNumber = cardNumber;
     }
 
-    public LocalDate getExpirationDate() {
+    public Date getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(LocalDate expirationDate) {
+    public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public AccountEntity getAccount() {
+        return account;
+    }
+
+    public void setAccount(AccountEntity account) {
+        this.account = account;
     }
 
     public String getSecurityCode() {

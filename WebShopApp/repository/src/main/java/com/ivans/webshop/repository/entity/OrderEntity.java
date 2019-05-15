@@ -6,6 +6,7 @@ import net.bytebuddy.implementation.bytecode.constant.IntegerConstant;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,12 +17,12 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Temporal(TemporalType.DATE)
-    private LocalDate ordered;
+    private Date ordered;
     @Temporal(TemporalType.DATE)
-    private LocalDate shipped;
+    private Date shipped;
     private OrderStatus status;
     private double total;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy  = "order")
     private List<LineItemEntity> lineItems = new ArrayList<LineItemEntity>();
     @OneToOne
     private PaymentEntity payment;
@@ -32,8 +33,7 @@ public class OrderEntity {
     public OrderEntity() {
     }
 
-    public OrderEntity(Integer id, LocalDate ordered, LocalDate shipped, OrderStatus status, double total, List<LineItemEntity> lineItems, PaymentEntity payment, AccountEntity account) {
-        this.id = id;
+    public OrderEntity(Date ordered, Date shipped, OrderStatus status, double total, List<LineItemEntity> lineItems, PaymentEntity payment, AccountEntity account) {
         this.ordered = ordered;
         this.shipped = shipped;
         this.status = status;
@@ -43,7 +43,8 @@ public class OrderEntity {
         this.account = account;
     }
 
-    public OrderEntity(LocalDate ordered, LocalDate shipped, OrderStatus status, double total, List<LineItemEntity> lineItems, PaymentEntity payment, AccountEntity account) {
+    public OrderEntity(Integer id, Date ordered, Date shipped, OrderStatus status, double total, List<LineItemEntity> lineItems, PaymentEntity payment, AccountEntity account) {
+        this.id = id;
         this.ordered = ordered;
         this.shipped = shipped;
         this.status = status;
@@ -61,20 +62,28 @@ public class OrderEntity {
         this.id = id;
     }
 
-    public LocalDate getOrdered() {
+    public Date getOrdered() {
         return ordered;
     }
 
-    public void setOrdered(LocalDate ordered) {
+    public void setOrdered(Date ordered) {
         this.ordered = ordered;
     }
 
-    public LocalDate getShipped() {
+    public Date getShipped() {
         return shipped;
     }
 
-    public void setShipped(LocalDate shipped) {
+    public void setShipped(Date shipped) {
         this.shipped = shipped;
+    }
+
+    public AccountEntity getAccount() {
+        return account;
+    }
+
+    public void setAccount(AccountEntity account) {
+        this.account = account;
     }
 
     public OrderStatus getStatus() {

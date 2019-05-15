@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.UserDTO;
 import com.ivans.webshop.repository.entity.UserEntity;
 import com.ivans.webshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/users")
-    public List<UserEntity> getAllUsers(){
+    public List<UserDTO> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping(value = "/users/{id}")
-    public UserEntity getUserById(@PathVariable Integer id){
+    public UserDTO getUserById(@PathVariable Integer id) throws Exception {
         return userService.getUserById(id);
     }
 
@@ -29,12 +30,12 @@ public class UserController {
     }
 
     @PutMapping(value = "/users/{id}")
-    public void updateUser(@RequestBody UserEntity user, @PathVariable Integer id){
+    public void updateUser(@RequestBody UserEntity user, @PathVariable Integer id) throws Exception {
          userService.updateUser(user, id);
     }
 
     @DeleteMapping(value = "/users/{id}")
-    public void deleteUser(@PathVariable Integer id){
+    public void deleteUser(@PathVariable Integer id) throws Exception {
          userService.deleteUser(id);
     }
 }

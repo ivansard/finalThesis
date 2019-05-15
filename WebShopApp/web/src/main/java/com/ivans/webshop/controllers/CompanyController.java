@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.CompanyDTO;
 import com.ivans.webshop.repository.entity.CompanyEntity;
 import com.ivans.webshop.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ public class CompanyController {
     private CompanyService companyService;
 
     @GetMapping(value = "/companies")
-    public List<CompanyEntity> getAllCompanies() {
+    public List<CompanyDTO> getAllCompanies() {
         return companyService.getAllCompanies();
     }
 
     @GetMapping(value = "/companies/{id}")
-    public CompanyEntity getCompanyById(@PathVariable Integer id) {
+    public CompanyDTO getCompanyById(@PathVariable Integer id) throws Exception {
         return companyService.getCompanyById(id);
     }
 

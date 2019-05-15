@@ -7,11 +7,13 @@ import com.ivans.webshop.repository.enums.OrderStatus;
 import com.ivans.webshop.repository.repo.OrderRepo;
 import com.ivans.webshop.service.interfaces.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class OrderService implements IOrderService {
 
     @Autowired

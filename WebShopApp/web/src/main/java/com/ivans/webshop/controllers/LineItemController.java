@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.LineItemDTO;
 import com.ivans.webshop.repository.entity.LineItemEntity;
 import com.ivans.webshop.services.LineItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +17,22 @@ public class LineItemController {
     private LineItemService lineItemService;
 
     @GetMapping(value = "/lineItems/order/{id}")
-    public List<LineItemEntity> getLineItemsByOrderId(@PathVariable("id") Integer id) {
+    public List<LineItemDTO> getLineItemsByOrderId(@PathVariable("id") Integer id) {
         return lineItemService.getLineItemsByOrderId(id);
     }
 
     @GetMapping(value = "/lineItems/product/{id}")
-    public List<LineItemEntity> getLineItemsByProductId(@PathVariable("id") Integer id) {
+    public List<LineItemDTO> getLineItemsByProductId(@PathVariable("id") Integer id) {
         return lineItemService.getLineItemsByProductId(id);
     }
 
     @GetMapping(value = "/lineItems/product/name/{productName}")
-    public List<LineItemEntity> getLineItemsByProductName(@PathVariable("productName") String productName) {
+    public List<LineItemDTO> getLineItemsByProductName(@PathVariable("productName") String productName) {
         return lineItemService.getLineItemsByProductName(productName);
     }
 
     @GetMapping(value = "/lineItems/{id}")
-    public LineItemEntity getLineItemById(@PathVariable("id") Integer id) {
+    public LineItemDTO getLineItemById(@PathVariable("id") Integer id) {
         try {
             return lineItemService.getLineItemById(id);
         } catch (Exception ex) {

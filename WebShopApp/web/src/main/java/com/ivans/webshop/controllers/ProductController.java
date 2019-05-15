@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.ProductDTO;
 import com.ivans.webshop.repository.entity.CompanyEntity;
 import com.ivans.webshop.repository.entity.ProductEntity;
 import com.ivans.webshop.repository.enums.ProductCategory;
@@ -24,28 +25,28 @@ public class ProductController {
 
 
     @GetMapping(value = "/products")
-    public List<ProductEntity> getAllProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping(value = "/products/search/category/{cat}")
-    public List<ProductEntity> getProductsByCategory(@PathVariable String cat) {
+    public List<ProductDTO> getProductsByCategory(@PathVariable String cat) {
         ProductCategory category = ProductCategory.valueOf(cat);
         return productService.getProductsByCategory(category);
     }
 
     @GetMapping(value = "/products/search/company/{companyName}")
-    public List<ProductEntity> getProductsByCompany(@PathVariable String companyName) {
+    public List<ProductDTO> getProductsByCompany(@PathVariable String companyName) {
         return productService.getProductsByCompanyName(companyName);
     }
 
     @GetMapping(value = "/products/search/name/{productName}")
-    public List<ProductEntity> getProductsByName(@PathVariable String productName) {
+    public List<ProductDTO> getProductsByName(@PathVariable String productName) {
             return productService.getProductsByName(productName);
     }
 
     @GetMapping(value = "/products/{productId}")
-    public ProductEntity getProductById(@PathVariable Integer productId) {
+    public ProductDTO getProductById(@PathVariable Integer productId) {
         try{
             return productService.getProductById(productId);
         } catch (Exception ex){

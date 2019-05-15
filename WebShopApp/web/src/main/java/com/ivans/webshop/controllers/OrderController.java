@@ -1,8 +1,10 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.OrderDTO;
 import com.ivans.webshop.repository.entity.OrderEntity;
 import com.ivans.webshop.repository.enums.OrderStatus;
 import com.ivans.webshop.services.OrderService;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +20,12 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/orders")
-    public List<OrderEntity> getAllOrders(){
+    public List<OrderDTO> getAllOrders(){
         return orderService.getAllOrders();
     }
 
     @GetMapping("/orders/{orderId}")
-    public OrderEntity getOrderById(@PathVariable Integer orderId) throws Exception {
+    public OrderDTO getOrderById(@PathVariable Integer orderId) throws Exception {
         try{
             return orderService.getOrderById(orderId);
         } catch (Exception ex){
@@ -50,27 +52,27 @@ public class OrderController {
     }
 
     @GetMapping("/orders/ordered/{orderedDate}")
-    public List<OrderEntity> getByOrderDate(@PathVariable LocalDate orderedDate){
+    public List<OrderDTO> getByOrderDate(@PathVariable LocalDate orderedDate){
         return orderService.getByOrderDate(orderedDate);
     }
 
     @GetMapping("/orders/shipped/{shippedDate}")
-    public List<OrderEntity> getByShippedDate(@PathVariable LocalDate shippedDate){
+    public List<OrderDTO> getByShippedDate(@PathVariable LocalDate shippedDate){
         return orderService.getByShippedDate(shippedDate);
     }
 
     @GetMapping("/orders/status/{status}")
-    public List<OrderEntity> getByStatus(@PathVariable OrderStatus status){
+    public List<OrderDTO> getByStatus(@PathVariable OrderStatus status){
         return orderService.getByStatus(status);
     }
 
     @GetMapping("/orders/account/{accountId}")
-    public List<OrderEntity> getByAccountId(@PathVariable Integer accountId){
+    public List<OrderDTO> getByAccountId(@PathVariable Integer accountId){
         return orderService.getByAccountId(accountId);
     }
 
     @GetMapping("/orders/payment/{paymentId}")
-    public OrderEntity getByPaymentId(@PathVariable Integer paymentId) throws Exception {
+    public OrderDTO getByPaymentId(@PathVariable Integer paymentId) throws Exception {
         try{
             return orderService.getByPaymentId(paymentId);
         } catch (Exception ex){

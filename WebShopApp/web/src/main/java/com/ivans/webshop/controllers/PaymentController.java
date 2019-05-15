@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.PaymentDTO;
 import com.ivans.webshop.repository.entity.PaymentEntity;
 import com.ivans.webshop.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +17,23 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping(value = "/payments/paymentDate/{paymentDate}")
-    public List<PaymentEntity> getEntitiesByPaymentDate(@PathVariable Date paymentDate) {
-        return paymentService.getEntitiesByPaymentDate(paymentDate);
-    }
+//    @GetMapping(value = "/payments/paymentDate/{paymentDate}")
+//    public List<PaymentEntity> getEntitiesByPaymentDate(@PathVariable Date paymentDate) {
+//        return paymentService.getEntitiesByPaymentDate(paymentDate);
+//    }
 
     @GetMapping(value = "/payments/paymentDate")
-    public List<PaymentEntity> getAllByPaymentDateBetween(@RequestParam Date startDate, @RequestParam Date endDate) {
+    public List<PaymentDTO> getAllByPaymentDateBetween(@RequestParam Date startDate, @RequestParam Date endDate) {
         return paymentService.getAllByPaymentDateBetween(startDate, endDate);
     }
 
     @GetMapping(value = "/payments")
-    public List<PaymentEntity> getAllPayments() {
+    public List<PaymentDTO> getAllPayments() {
         return paymentService.getAllPayments();
     }
 
     @GetMapping(value = "/payments/{paymentId}")
-    public PaymentEntity getPaymentById(@PathVariable Integer paymentId) {
+    public PaymentDTO getPaymentById(@PathVariable Integer paymentId) {
         try {
             return paymentService.getPaymentById(paymentId);
         } catch (Exception ex) {
@@ -40,14 +41,14 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value = "/payments/order/{orderId}")
-    public PaymentEntity getPaymentByOrderId(@PathVariable Integer orderId) {
-        try {
-            return paymentService.getPaymentByOrderId(orderId);
-        } catch (Exception ex) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Payment for submitted order does not exist", ex);
-        }
-    }
+//    @GetMapping(value = "/payments/order/{orderId}")
+//    public PaymentEntity getPaymentByOrderId(@PathVariable Integer orderId) {
+//        try {
+//            return paymentService.getPaymentByOrderId(orderId);
+//        } catch (Exception ex) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Payment for submitted order does not exist", ex);
+//        }
+//    }
 
     @PostMapping(value = "/payments/{paymentId}")
     public PaymentEntity updatePayment(@RequestBody PaymentEntity payment, @PathVariable Integer paymentId) {

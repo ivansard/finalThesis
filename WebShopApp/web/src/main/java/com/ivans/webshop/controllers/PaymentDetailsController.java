@@ -1,5 +1,6 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.PaymentDetailsDTO;
 import com.ivans.webshop.repository.entity.PaymentDetailsEntity;
 import com.ivans.webshop.services.PaymentDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,8 @@ public class PaymentDetailsController {
         return paymentDetailsService.findAllPaymentDetails();
     }
 
-    @GetMapping(value = "/paymentDetails/${paymentDetailsId}")
-    public PaymentDetailsEntity getPaymentDetailsById(@PathVariable Integer paymentDetailsId) throws Exception {
+    @GetMapping(value = "/paymentDetails/{paymentDetailsId}")
+    public PaymentDetailsDTO getPaymentDetailsById(@PathVariable Integer paymentDetailsId) throws Exception {
         try {
             return paymentDetailsService.getPaymentDetailsById(paymentDetailsId);
         } catch (Exception ex) {
@@ -39,7 +40,7 @@ public class PaymentDetailsController {
         }
     }
 
-    @PutMapping(value = "/paymentDetails/${paymentDetailsId}")
+    @PutMapping(value = "/paymentDetails/{paymentDetailsId}")
     public PaymentDetailsEntity updatePaymentDetails(
             @RequestBody PaymentDetailsEntity paymentDetails,
             @PathVariable Integer paymentDetailsId) throws Exception {
@@ -50,7 +51,7 @@ public class PaymentDetailsController {
         }
     }
 
-    @DeleteMapping(value = "/paymentDetails/${paymentDetailsId}")
+    @DeleteMapping(value = "/paymentDetails/{paymentDetailsId}")
     public void deletePaymentDetails(@PathVariable Integer paymentDetailsId) throws Exception {
         try {
             paymentDetailsService.deletePaymentDetails(paymentDetailsId);

@@ -3,6 +3,7 @@ package com.ivans.webshop.repository.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,9 +17,9 @@ public class AccountEntity {
     private String name;
     private boolean isClosed = false;
     @Temporal(TemporalType.DATE)
-    private LocalDate opened;
+    private Date opened;
     @Temporal(TemporalType.DATE)
-    private LocalDate closed;
+    private Date closed;
     @OneToOne
     @JoinColumn(name = "user_id")
     private WebUserEntity user;
@@ -30,7 +31,7 @@ public class AccountEntity {
     public AccountEntity() {
     }
 
-    public AccountEntity(String name, boolean isClosed, LocalDate opened, LocalDate closed, WebUserEntity user, List<PaymentDetailsEntity> paymentDetails, List<OrderEntity> orders) {
+    public AccountEntity(String name, boolean isClosed, Date opened, Date closed, WebUserEntity user, List<PaymentDetailsEntity> paymentDetails, List<OrderEntity> orders) {
         this.name = name;
         this.isClosed = isClosed;
         this.opened = opened;
@@ -40,7 +41,8 @@ public class AccountEntity {
         this.orders = orders;
     }
 
-    public AccountEntity(Integer id, String name, boolean isClosed, LocalDate opened, LocalDate closed, WebUserEntity user, List<PaymentDetailsEntity> paymentDetails, List<OrderEntity> orders) {
+
+    public AccountEntity(Integer id, String name, boolean isClosed, Date opened, Date closed, WebUserEntity user, List<PaymentDetailsEntity> paymentDetails, List<OrderEntity> orders) {
         this.id = id;
         this.name = name;
         this.isClosed = isClosed;
@@ -75,19 +77,19 @@ public class AccountEntity {
         isClosed = closed;
     }
 
-    public LocalDate getOpened() {
+    public Date getOpened() {
         return opened;
     }
 
-    public void setOpened(LocalDate opened) {
+    public void setOpened(Date opened) {
         this.opened = opened;
     }
 
-    public LocalDate getClosed() {
+    public Date getClosed() {
         return closed;
     }
 
-    public void setClosed(LocalDate closed) {
+    public void setClosed(Date closed) {
         this.closed = closed;
     }
 
@@ -114,4 +116,6 @@ public class AccountEntity {
     public void setUser(WebUserEntity user) {
         this.user = user;
     }
+
+
 }
