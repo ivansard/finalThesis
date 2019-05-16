@@ -34,6 +34,10 @@
             <artifactId>jstl</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.ivans.webshop</groupId>
             <artifactId>service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
