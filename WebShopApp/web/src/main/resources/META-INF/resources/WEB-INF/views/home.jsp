@@ -7,19 +7,56 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
+        <!-- CSS -->
+        <spring:url value="/resources/static/css/bootstrap.css" var="{bootstrapCss}" />
+        <spring:url value="/resources/static/css/style.css" var="{styleCss}" />
+        <spring:url value="/resources/static/css/fwslider.css" var="{fwsliderCss}" />
+        <!-- JS -->
+        <spring:url value="/resources/static/js/jquery.min.js" var="{jqueryJs}" />
+        <spring:url value="/resources/static/js/jquery-ui.min.js" var="{jqueryUiJs}" />
+        <spring:url value="/resources/static/js/fwslider.js" var="{fwsliderJs}" />
+        <spring:url value="/resources/static/js/responsive-nav.js" var="{responsiveNavJs}" />
+        <spring:url value="/resources/static/js/classie.js" var="{classieJs}" />
+        <spring:url value="/resources/static/js/uisearch.js" var="{uiSearchJs}" />
+        <spring:url value="/resources/static/js/jquery.flexisel.js" var="{jqueryFlexiselJs}" />
+        <!-- IMAGES -->
+        <spring:url value="/resources/static/images/logo.png" var="{logoImg}" />
+        <spring:url value="/resources/static/images/nav.png" var="{navImg}" />
+        <spring:url value="/resources/static/images/edit.png" var="{editImg}" />
+        <spring:url value="/resources/static/images/close_edit.png" var="{closeEditImg}" />
+        <spring:url value="/resources/static/images/1.jpg" var="{1Img}" />
+        <spring:url value="/resources/static/images/slider1.jpg" var="{slider1Img}" />
+        <spring:url value="/resources/static/images/slider2.jpg" var="{slider2Img}" />
+        <spring:url value="/resources/static/images/board1.jpg" var="{board1Img}" />
+        <spring:url value="/resources/static/images/board2.jpg" var="{board2Img}" />
+        <spring:url value="/resources/static/images/board3.jpg" var="{board3Img}" />
+        <spring:url value="/resources/static/images/board4.jpg" var="{board4Img}" />
+        <spring:url value="/resources/static/images/board5.jpg" var="{board5Img}" />
+        <spring:url value="/resources/static/images/pic1.jpg" var="{pic1Img}" />
+        <spring:url value="/resources/static/images/pic2.jpg" var="{pic2Img}" />
+        <spring:url value="/resources/static/images/pic3.jpg" var="{pic3Img}" />
+        <spring:url value="/resources/static/images/pic4.jpg" var="{pic4Img}" />
+        <spring:url value="/resources/static/images/as.png" var="{asImg}" />
+        <spring:url value="/resources/static/images/srl.png" var="{srlImg}" />
+        <spring:url value="/resources/static/images/nz.png" var="{nzImg}" />
+        <spring:url value="/resources/static/images/pk.png" var="{pkImg}" />
+        <spring:url value="/resources/static/images/uk.png" var="{ukImg}" />
+        <spring:url value="/resources/static/images/us.png" var="{usImg}" />
+        <!-- FONTS -->
+        <spring:url value="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" var="{googleFonts}" />
 <title>Free Snow Bootstrap Website Template | Home :: w3layouts</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="${bootstrapCss}" rel='stylesheet' type='text/css' />
+<link href="${styleCss}" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='${googleFonts}' rel='stylesheet' type='text/css'>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="js/jquery.min.js"></script>
+<script src="${jqueryJs}"></script>
 <!--<script src="js/jquery.easydropdown.js"></script>-->
 <!--start slider -->
-<link rel="stylesheet" href="css/fwslider.css" media="all">
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/fwslider.js"></script>
+<link rel="stylesheet" href="${fwsliderCss}" media="all">
+<script src="${jqueryUiJs}"></script>
+<script src="${fwsliderJs}"></script>
 <!--end slider -->
 <script type="text/javascript">
         $(document).ready(function() {
@@ -60,10 +97,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			  <div class="col-md-12">
 				 <div class="header-left">
 					 <div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt=""/></a>
+						<a href="index.html"><img src="${logoImg}" alt=""/></a>
 					 </div>
 					 <div class="menu">
-						  <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
+						  <a class="toggleMenu" href="#"><img src="${navImg}" alt="" /></a>
 						    <ul class="nav" id="nav">
 						    	<li><a href="shop.html">Shop</a></li>
 						    	<li><a href="team.html">Team</a></li>
@@ -73,7 +110,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<li><a href="contact.html">Contact</a></li>
 								<div class="clear"></div>
 							</ul>
-							<script type="text/javascript" src="js/responsive-nav.js"></script>
+							<script type="text/javascript" src="${responsiveNavJs}"></script>
 				    </div>
 	    		    <div class="clear"></div>
 	    	    </div>
@@ -89,8 +126,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 						</div>
 						<!----search-scripts---->
-						<script src="js/classie.js"></script>
-						<script src="js/uisearch.js"></script>
+						<script src="${classieJs}"></script>
+						<script src="${uiSearchJs}"></script>
 						<script>
 							new UISearch( document.getElementById( 'sb-search' ) );
 						</script>
@@ -99,11 +136,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					 <li><a class="active-icon c1" href="#"> </a>
 						<ul class="sub-icon1 list">
 						  <div class="product_control_buttons">
-						  	<a href="#"><img src="images/edit.png" alt=""/></a>
-						  		<a href="#"><img src="images/close_edit.png" alt=""/></a>
+						  	<a href="#"><img src="${editImg}" alt=""/></a>
+						  		<a href="#"><img src="${closeEditImg}" alt=""/></a>
 						  </div>
 						   <div class="clear"></div>
-						  <li class="list_img"><img src="images/1.jpg" alt=""/></li>
+						  <li class="list_img"><img src="${1Img}" alt=""/></li>
 						  <li class="list_desc"><h4><a href="#">velit esse molestie</a></h4><span class="actual">1 x
                           $12.00</span></li>
 						  <div class="login_buttons">
@@ -127,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          <div class="slider_container">
             <div class="slide">
                 <!-- Slide image -->
-               <img src="images/slider1.jpg" class="img-responsive" alt=""/>
+               <img src="${slider1Img}" class="img-responsive" alt=""/>
                 <!-- /Slide image -->
                 <!-- Texts container -->
                 <div class="slide_content">
@@ -142,7 +179,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <!-- /Duplicate to create more slides -->
             <div class="slide">
-               <img src="images/slider2.jpg" class="img-responsive" alt=""/>
+               <img src="${slider2Img}" class="img-responsive" alt=""/>
                 <div class="slide_content">
                     <div class="slide_content_wrap">
                         <h1 class="title">Run Over<br>Everything</h1>
@@ -164,11 +201,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<p>hendrerit in vulputate velit esse molestie consequat, vel illum dolore</p>
 			<div class="close_but"><i class="close1"> </i></div>
 				<ul id="flexiselDemo3">
-				<li><img src="images/board1.jpg" /></li>
-				<li><img src="images/board2.jpg" /></li>
-				<li><img src="images/board3.jpg" /></li>
-				<li><img src="images/board4.jpg" /></li>
-				<li><img src="images/board5.jpg" /></li>
+				<li><img src="${board1Img}" /></li>
+				<li><img src="${board2Img}" /></li>
+				<li><img src="${board3Img}" /></li>
+				<li><img src="${board4Img}" /></li>
+				<li><img src="${board5Img}" /></li>
 			</ul>
 		<h3>SnowBoard Extreme Series</h3>
 			<script type="text/javascript">
@@ -226,7 +263,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <h2>Hover Style #9</h2>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
                       </div>
-                   </a> </div
+                   </a> </div>
                   </div>
                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
                   <p class="m_5">claritatem insitam</p>
