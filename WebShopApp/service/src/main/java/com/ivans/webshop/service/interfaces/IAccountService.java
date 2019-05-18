@@ -20,6 +20,8 @@ public interface IAccountService {
 
     AccountEntity updateAccount(AccountEntity user, String username) throws Exception;
 
+    AccountEntity saveAccount(AccountEntity account);
+
     void deleteAccount(String username) throws Exception;
 
     void deleteAccount(Integer id) throws Exception;

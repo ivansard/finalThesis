@@ -40,7 +40,22 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserEntity addUser(UserEntity user) {
+    public UserDTO getUserByUsername(String username) throws Exception {
+        UserEntity user = userRepository.findByUsername(username);
+        if(user.equals(null)){
+            throw new Exception("User with submitted username does not exist");
+        }
+        UserDTO userToReturn = userMapper.user2DTO(user);
+        System.out.println("Password inside service");
+        System.out.println(userToReturn.getPassword());
+        return userToReturn;
+    }
+
+    @Override
+    public UserEntity addUser(UserEntity user) throws Exception {
+        if(userRepository.findByUsername(user.getUsername()) != null){
+            throw new Exception("User with submitted username already exists");
+        }
         return userRepository.save(user);
     }
 

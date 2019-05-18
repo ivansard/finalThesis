@@ -11,7 +11,9 @@ public interface IUserService {
 
     UserDTO getUserById(Integer id) throws Exception;
 
-    UserEntity addUser(UserEntity user);
+    UserDTO getUserByUsername(String username) throws Exception;
+
+    UserEntity addUser(UserEntity user) throws Exception;
 
     UserEntity updateUser(UserEntity user, Integer id) throws Exception;
 

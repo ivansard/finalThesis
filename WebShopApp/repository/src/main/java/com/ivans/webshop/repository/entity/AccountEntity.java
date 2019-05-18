@@ -17,7 +17,7 @@ public class AccountEntity {
     private String name;
     private boolean isClosed = false;
     @Temporal(TemporalType.DATE)
-    private Date opened;
+    private Date opened = new Date();
     @Temporal(TemporalType.DATE)
     private Date closed;
     @OneToOne
@@ -53,11 +53,11 @@ public class AccountEntity {
         this.orders = orders;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

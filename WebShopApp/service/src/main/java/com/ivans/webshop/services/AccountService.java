@@ -70,6 +70,11 @@ public class AccountService implements IAccountService {
     }
 
     @Override
+    public AccountEntity saveAccount(AccountEntity account) {
+        return accountRepo.save(account);
+    }
+
+    @Override
     public void deleteAccount(String username) throws Exception {
         AccountEntity accountInDb = accountRepo.findByUserUsername(username);
         if (accountInDb.equals(null)) {
