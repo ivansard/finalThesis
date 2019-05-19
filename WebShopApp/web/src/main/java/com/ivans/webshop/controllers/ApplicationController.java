@@ -39,5 +39,10 @@ public class ApplicationController {
         return "home";
     }
 
+    @RequestMapping("/shop")
+    public String renderShopPage(){
+        return "shop";
+    }
+
 
 }

@@ -31,7 +31,6 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-
     public ProductEntity(Integer id, String name, String imageUrl, double price, double tax, double discount, ProductCategory category, CompanyEntity company) {
         this.id = id;
         this.name = name;

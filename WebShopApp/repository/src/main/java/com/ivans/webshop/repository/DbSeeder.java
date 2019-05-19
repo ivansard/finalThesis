@@ -36,11 +36,13 @@ public class DbSeeder implements CommandLineRunner {
         CompanyUserEntity c2 = new CompanyUserEntity("Pera", "Peric", "pera", "123", UserState.New);
         WebUserEntity w1 = new WebUserEntity("Mita", "Mitic", "mita", "123", UserState.New);
 
-        ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
-        ProductEntity p4 = new ProductEntity("Snowboard 2","/resources/images/8", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
-        ProductEntity p2 = new ProductEntity("Ski Hoodie","/resources/images/board5", 290, 0.4, 0.1, ProductCategory.SKI, com2);
-        ProductEntity p3 = new ProductEntity("Ski Set","/resources/images/e1", 290, 0.4, 0.1, ProductCategory.ACCESSORIES, com3);
+//        ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3", 290, 0.4, 0.1, null, com1);
+//        ProductEntity p4 = new ProductEntity("Snowboard 2","/resources/images/8", 290, 0.4, 0.1, null, com1);
+//        ProductEntity p2 = new ProductEntity("Ski Hoodie","/resources/images/board5", 290, 0.4, 0.1, null, com2);
+//        ProductEntity p3 = new ProductEntity("Ski Set","/resources/images/e1", 290, 0.4, 0.1, null, com3);
 
+        ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3", 290, 0.4, 0.1, null, com1);
+        ProductEntity p2 = new ProductEntity("Snowboard 2","/resources/images/8", 290, 0.4, 0.1, null, com1);
         c1.setCompany(com1);
         c2.setCompany(com2);
 
@@ -57,8 +59,8 @@ public class DbSeeder implements CommandLineRunner {
         List<ProductEntity> products = new ArrayList<ProductEntity>();
         products.add(p1);
         products.add(p2);
-        products.add(p3);
-        products.add(p4);
+//        products.add(p3);
+//        products.add(p4);
 
         companyRepo.saveAll(companies);
         userRepo.saveAll(users);
