@@ -36,10 +36,10 @@ public class DbSeeder implements CommandLineRunner {
         CompanyUserEntity c2 = new CompanyUserEntity("Pera", "Peric", "pera", "123", UserState.New);
         WebUserEntity w1 = new WebUserEntity("Mita", "Mitic", "mita", "123", UserState.New);
 
-        ProductEntity p1 = new ProductEntity("Kimono", 290, 0.4, 0.1, ProductCategory.SPORT, com1);
-        ProductEntity p4 = new ProductEntity("Rukavice", 290, 0.4, 0.1, ProductCategory.SPORT, com1);
-        ProductEntity p2 = new ProductEntity("Gitara", 290, 0.4, 0.1, ProductCategory.INSTRUMENTS, com2);
-        ProductEntity p3 = new ProductEntity("Knjiga", 290, 0.4, 0.1, ProductCategory.BOOKS, com3);
+        ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
+        ProductEntity p4 = new ProductEntity("Snowboard 2","/resources/images/8", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
+        ProductEntity p2 = new ProductEntity("Ski Hoodie","/resources/images/board5", 290, 0.4, 0.1, ProductCategory.SKI, com2);
+        ProductEntity p3 = new ProductEntity("Ski Set","/resources/images/e1", 290, 0.4, 0.1, ProductCategory.ACCESSORIES, com3);
 
         c1.setCompany(com1);
         c2.setCompany(com2);

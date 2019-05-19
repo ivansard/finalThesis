@@ -80,6 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </c:when>
 
                                     <c:otherwise>
+                                        <li><a href="/profile">Profile</a></li>
                                         <li><a href="/users/logout">Log Out</a></li>
                                     </c:otherwise>
                                 </c:choose>

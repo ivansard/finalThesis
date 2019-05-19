@@ -26,10 +26,10 @@ public class PaymentDetailsController {
         return paymentDetailsService.findAllByCardNumber(cardNumber);
     }
 
-    @GetMapping(value = "/paymentDetails")
-    public List<PaymentDetailsEntity> findAllPaymentDetails() {
-        return paymentDetailsService.findAllPaymentDetails();
-    }
+//    @GetMapping(value = "/paymentDetails")
+//    public List<PaymentDetailsEntity> findAllPaymentDetails() {
+//        return paymentDetailsService.findAllPaymentDetails();
+//    }
 
     @GetMapping(value = "/paymentDetails/{paymentDetailsId}")
     public PaymentDetailsDTO getPaymentDetailsById(@PathVariable Integer paymentDetailsId) throws Exception {

@@ -64,9 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-12">
 						<div class="header-left">
 							<div class="logo">
-								<a href="index.html"
-									><img src="resources/images/logo.png" alt=""
-								/></a>
+                                <a href="/"><img src="/resources/images/logo.png" alt=""/></a>
 							</div>
 							<div class="menu">
 								<a class="toggleMenu" href="#"

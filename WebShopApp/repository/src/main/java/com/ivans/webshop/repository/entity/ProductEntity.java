@@ -14,6 +14,7 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String imageUrl;
     private double price;
     private double tax;
     private double discount;
@@ -30,34 +31,34 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-    public ProductEntity(Integer id, String name, double price, double tax, double discount, ProductCategory category, CompanyEntity company, List<LineItemEntity> lineItems) {
-        this.setId(id);
-        this.setName(name);
-        this.setPrice(price);
-        this.setTax(tax);
-        this.setDiscount(discount);
-        this.setCategory(category);
-        this.setCompany(company);
-        this.setLineItems(lineItems);
-    }
 
-    public ProductEntity(String name, double price, double tax, double discount, ProductCategory category, CompanyEntity company, List<LineItemEntity> lineItems) {
-        this.setName(name);
-        this.setPrice(price);
-        this.setTax(tax);
-        this.setDiscount(discount);
-        this.setCategory(category);
-        this.setCompany(company);
-        this.setLineItems(lineItems);
-    }
-
-    public ProductEntity(String name, double price, double tax, double discount, ProductCategory category, CompanyEntity company) {
+    public ProductEntity(Integer id, String name, String imageUrl, double price, double tax, double discount, ProductCategory category, CompanyEntity company) {
+        this.id = id;
         this.name = name;
+        this.imageUrl = imageUrl;
         this.price = price;
         this.tax = tax;
         this.discount = discount;
         this.category = category;
         this.company = company;
+    }
+
+    public ProductEntity(String name, String imageUrl, double price, double tax, double discount, ProductCategory category, CompanyEntity company) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.tax = tax;
+        this.discount = discount;
+        this.category = category;
+        this.company = company;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Integer getId() {
