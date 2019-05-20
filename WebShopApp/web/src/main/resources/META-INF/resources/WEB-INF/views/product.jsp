@@ -355,14 +355,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<p class="price2">$${product.discountPrice}</p>
 								<ul class="prosuct-qty">
 									<span>Quantity:</span>
-									<select>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
+									<select name="quantity">
+										<option value=1>1</option>
+										<option value=2>2</option>
+										<option value=3>3</option>
+										<option value=4>4</option>
+										<option value=5>5</option>
+										<option value=6>6</option>
 									</select>
+									<input id="prodId" name="productId" type="hidden" value="${product.id}">
 								</ul>
 								<button type="submit" name="Submit" class="exclusive">
 									<span>Add to cart</span>

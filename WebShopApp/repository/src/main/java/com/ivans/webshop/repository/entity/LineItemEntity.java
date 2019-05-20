@@ -10,8 +10,7 @@ public class LineItemEntity {
     private
     Integer id;
     private int quantity;
-    private double discount;
-    private double price;
+    private double totalPrice;
     @ManyToOne
     @JoinColumn(name = "product_id")
     private ProductEntity product;
@@ -22,21 +21,33 @@ public class LineItemEntity {
     public LineItemEntity() {
     }
 
-    public LineItemEntity(Integer id, int quantity, double discount, double price, ProductEntity product, OrderEntity order) {
-        this.setId(id);
-        this.setQuantity(quantity);
-        this.setDiscount(discount);
-        this.setPrice(price);
-        this.setProduct(product);
-        this.setOrder(order);
+    public LineItemEntity(Integer id, int quantity, double totalPrice, ProductEntity product, OrderEntity order) {
+        this.id = id;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.product = product;
+        this.order = order;
     }
 
-    public LineItemEntity(int quantity, double discount, double price, ProductEntity product, OrderEntity order) {
-        this.setQuantity(quantity);
-        this.setDiscount(discount);
-        this.setPrice(price);
-        this.setProduct(product);
-        this.setOrder(order);
+    public LineItemEntity(int quantity, double totalPrice, ProductEntity product, OrderEntity order) {
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.product = product;
+        this.order = order;
+    }
+
+    public LineItemEntity(int quantity, double totalPrice, ProductEntity product) {
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.product = product;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Integer getId() {
@@ -53,22 +64,6 @@ public class LineItemEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public ProductEntity getProduct() {

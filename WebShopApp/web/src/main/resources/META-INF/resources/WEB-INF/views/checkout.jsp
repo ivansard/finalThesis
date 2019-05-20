@@ -159,15 +159,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="main">
 			<div class="shop_top">
 				<div class="container">
-					<h4 class="title">Shopping cart is empty</h4>
-					<p class="cart">
-						You have no items in your shopping cart.<br />Click<a
-							href="index.html"
-						>
-							here</a
-						>
-						to continue shopping
-					</p>
+				<c:choose>
+                    <c:when test="${sessionScope.cart == null}">
+                        <h4 class="title">Shopping cart is empty</h4>
+                        <p class="cart">
+                            You must be logged in order to create a shopping cart!<br />Click<a
+                                href="/login"
+                            >
+                                here</a
+                            >
+                            to login!
+                        </p>
+                    </c:when>
+
+                    <c:otherwise>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                  <th>Product</th>
+                                  <th>Quantity</th>
+                                  <th>Total</th>
+                                </tr>
+                            </thead>
+                          <tbody>
+                             <c:forEach items="${sessionScope.cart.lineItems}" var="lineItem">
+                                <tr>
+                                     <td>${lineItem.product.name}</td>
+                                     <td>${lineItem.quantity}</td>
+                                     <td>${lineItem.totalPrice}</td>
+                                </tr>
+                             </c:forEach>
+                          </tbody>
+                        </table>
+                        <p class="cart">
+                            To continue shopping<br />Click<a
+                                href="/shop"
+                            >
+                                here</a
+                            >
+                        </p>
+                         <p class="cart">
+                            To checkout your cart<br />Click<a
+                                href="/purchase"
+                            >
+                                here</a
+                            >
+                        </p>
+                    </c:otherwise>
+                </c:choose>
+
 				</div>
 			</div>
 		</div>

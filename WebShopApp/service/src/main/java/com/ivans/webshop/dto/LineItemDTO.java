@@ -3,10 +3,17 @@ package com.ivans.webshop.dto;
 public class LineItemDTO {
 
     private Integer quantity;
-    private double discount;
-    private double price;
     private double totalPrice;
     private ProductDTO product;
+
+    public LineItemDTO(Integer quantity, double totalPrice, ProductDTO product) {
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.product = product;
+    }
+
+    public LineItemDTO() {
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -14,22 +21,6 @@ public class LineItemDTO {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public double getTotalPrice() {
