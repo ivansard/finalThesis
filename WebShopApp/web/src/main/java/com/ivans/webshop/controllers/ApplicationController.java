@@ -4,6 +4,7 @@ import com.ivans.webshop.dto.ProductDTO;
 import com.ivans.webshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +54,13 @@ public class ApplicationController {
         request.setAttribute("products", allProducts);
 
         return "shop";
+    }
+
+    @RequestMapping("/products/{productId}")
+    public String renderProductPage(@PathVariable Integer productId, HttpServletRequest request) throws Exception {
+        ProductDTO product = productService.getProductById(productId);
+        request.setAttribute("product", product);
+        return "product";
     }
 
 

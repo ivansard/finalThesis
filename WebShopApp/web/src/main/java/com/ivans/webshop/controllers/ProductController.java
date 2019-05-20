@@ -45,14 +45,14 @@ public class ProductController {
             return productService.getProductsByName(productName);
     }
 
-    @GetMapping(value = "/products/{productId}")
-    public ProductDTO getProductById(@PathVariable Integer productId) {
-        try{
-            return productService.getProductById(productId);
-        } catch (Exception ex){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product with submitted ID does not exist", ex);
-        }
-    }
+//    @GetMapping(value = "/products/{productId}")
+//    public ProductDTO getProductById(@PathVariable Integer productId) {
+//        try{
+//            return productService.getProductById(productId);
+//        } catch (Exception ex){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product with submitted ID does not exist", ex);
+//        }
+//    }
 
     @PutMapping(value = "/products/{productId}")
     public ProductEntity updateProduct(@RequestBody ProductEntity product, @PathVariable Integer productId) {

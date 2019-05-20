@@ -16,7 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("WEB-INF/views/");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
     }
@@ -27,5 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
             registry.addResourceHandler("/resources/**").addResourceLocations(
                     "classpath:/static/");
         }
+        registry.addResourceHandler("/products/**").addResourceLocations(
+                    "classpath:/static/");
     }
 }
