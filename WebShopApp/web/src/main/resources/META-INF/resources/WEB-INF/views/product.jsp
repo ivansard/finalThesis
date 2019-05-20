@@ -351,6 +351,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 						<div class="col-md-3">
 							<div class="box-info-product">
+							<form method="POST" action="/checkout">
 								<p class="price2">$${product.discountPrice}</p>
 								<ul class="prosuct-qty">
 									<span>Quantity:</span>
@@ -366,6 +367,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<button type="submit" name="Submit" class="exclusive">
 									<span>Add to cart</span>
 								</button>
+							</form>
 							</div>
 						</div>
 					</div>

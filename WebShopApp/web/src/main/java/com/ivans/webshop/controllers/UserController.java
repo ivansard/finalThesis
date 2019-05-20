@@ -7,6 +7,7 @@ import com.ivans.webshop.repository.entity.WebUserEntity;
 import com.ivans.webshop.repository.enums.UserState;
 import com.ivans.webshop.services.AccountService;
 import com.ivans.webshop.services.UserService;
+import com.ivans.webshop.util.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.*;
@@ -40,17 +41,23 @@ public class UserController {
     public void addUser(@RequestParam String username, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password, HttpServletResponse httpResponse, HttpServletRequest httpRequest) throws IOException {
         try {
 
+//            Registering user
             WebUserEntity webUser = new WebUserEntity(firstName, lastName, username, password, UserState.New);
             webUser = (WebUserEntity) userService.addUser(webUser);
 
-            httpRequest.getSession().setAttribute("loggedUser", webUser);
-            System.out.println(httpRequest.getSession().getAttribute("loggedUser"));
-
-
+//            Creating account for newly registered user
             AccountEntity account = new AccountEntity();
             account.setUser(webUser);
             account.setName(webUser.getUsername());
             accountService.saveAccount(account);
+
+//            Creating shopping cart for new registered user who is now logged int
+            ShoppingCart shoppingCart = new ShoppingCart();
+
+//            Setting account, user and shopping cart into session
+            httpRequest.getSession().setAttribute("loggedUser", webUser);
+            httpRequest.getSession().setAttribute("cart", shoppingCart);
+            httpRequest.getSession().setAttribute("account", account);
 
             httpResponse.sendRedirect("/");
 
@@ -63,13 +70,16 @@ public class UserController {
     @PostMapping(value = "/users/login")
     public UserDTO loginUser(@RequestParam String username, @RequestParam String password, HttpServletResponse httpResponse, HttpServletRequest httpRequest) throws IOException {
         try {
-            System.out.println(username);
+//          Searching for user by username and then checking his password
             UserDTO user = userService.getUserByUsername(username);
-            System.out.println(user.getUsername());
             if(!user.getPassword().equals(password)){
                 throw new Exception("Invalid password!");
             }
+//            If the user is successfully authenticated, generate a shopping cart and set both him and the cart into the active session
+            ShoppingCart shoppingCart = new ShoppingCart();
             httpRequest.getSession().setAttribute("loggedUser", user);
+            httpRequest.getSession().setAttribute("cart", shoppingCart);
+//          Redirect to home page
             httpResponse.sendRedirect("/");
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,6 +92,10 @@ public class UserController {
     public void logoutUser(HttpServletResponse response, HttpServletRequest request){
         System.out.println(request.getSession().getAttribute("loggedUser"));
         request.getSession().removeAttribute("loggedUser");
+        request.getSession().removeAttribute("cart");
+
+//        Persisting changes to the account - STILL TO DO (Proveri jos da li ces morati)
+        request.getSession().removeAttribute("account");
         try {
             response.sendRedirect("/");
         } catch (IOException e) {
