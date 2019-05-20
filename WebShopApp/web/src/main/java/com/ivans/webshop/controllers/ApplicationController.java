@@ -1,12 +1,19 @@
 package com.ivans.webshop.controllers;
 
+import com.ivans.webshop.dto.ProductDTO;
+import com.ivans.webshop.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class ApplicationController {
+
+    @Autowired
+    ProductService productService;
 
     @RequestMapping("/")
     public String homepage(){
@@ -40,7 +47,11 @@ public class ApplicationController {
     }
 
     @RequestMapping("/shop")
-    public String renderShopPage(){
+    public String renderShopPage(HttpServletRequest request){
+
+        List<ProductDTO> allProducts = productService.getAllProducts();
+        request.setAttribute("products", allProducts);
+
         return "shop";
     }
 

@@ -5,6 +5,7 @@ import com.ivans.webshop.repository.enums.ProductCategory;
 public class ProductDTO {
 
     private String name;
+    private String imageUrl;
     private double price;
     private double tax;
     private double discount;
@@ -12,6 +13,14 @@ public class ProductDTO {
     private CompanyDTO company;
 
     public ProductDTO() {
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {

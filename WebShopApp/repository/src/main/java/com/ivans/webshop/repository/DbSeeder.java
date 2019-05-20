@@ -41,8 +41,8 @@ public class DbSeeder implements CommandLineRunner {
 //        ProductEntity p2 = new ProductEntity("Ski Hoodie","/resources/images/board5", 290, 0.4, 0.1, null, com2);
 //        ProductEntity p3 = new ProductEntity("Ski Set","/resources/images/e1", 290, 0.4, 0.1, null, com3);
 
-        ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3", 290, 0.4, 0.1, null, com1);
-        ProductEntity p2 = new ProductEntity("Snowboard 2","/resources/images/8", 290, 0.4, 0.1, null, com1);
+        ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3.jpg", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
+        ProductEntity p2 = new ProductEntity("Snowboard 2","/resources/images/8.jpg", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
         c1.setCompany(com1);
         c2.setCompany(com2);
 

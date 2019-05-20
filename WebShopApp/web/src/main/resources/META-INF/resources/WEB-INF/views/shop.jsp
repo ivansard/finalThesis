@@ -5,6 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 <html>
 	<head>
 		<title>Free Snow Bootstrap Website Template | Shop :: w3layouts</title>
@@ -64,7 +66,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-12">
 						<div class="header-left">
 							<div class="logo">
-                                <a href="/"><img src="/resources/images/logo.png" alt=""/></a>
+								<a href="index.html"><img src="resources/images/logo.png" alt=""/></a>
 							</div>
 							<div class="menu">
 								<a class="toggleMenu" href="#"
@@ -114,17 +116,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a class="active-icon c1" href="#"> </a>
 									<ul class="sub-icon1 list">
 										<div class="product_control_buttons">
-											<a href="#"
-												><img src="resources/images/edit.png" alt=""
-											/></a>
-											<a href="#"
-												><img src="resources/images/close_edit.png" alt=""
-											/></a>
+											<a href="#"><img src="resources/images/edit.png" alt=""/></a>
+											<a href="#"><img src="resources/images/close_edit.png" alt=""/></a>
 										</div>
 										<div class="clear"></div>
-										<li class="list_img">
-											<img src="resources/images/1.jpg" alt="" />
-										</li>
+										<li class="list_img"><img src="resources/images/1.jpg" alt="" /></li>
 										<li class="list_desc">
 											<h4><a href="#">velit esse molestie</a></h4>
 											<span class="actual">1 x $12.00</span>
@@ -173,201 +169,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="shop_top">
 				<div class="container">
 					<div class="row shop_box-top">
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic5.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<span class="sale-box">
-									<span class="sale-label">Sale!</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="reducedfrom">$66.00</span>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic6.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic7.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<span class="sale-box">
-									<span class="sale-label">Sale!</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="reducedfrom">$66.00</span>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic8.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="reducedfrom">$66.00</span>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic9.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic10.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<span class="sale-box">
-									<span class="sale-label">Sale!</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic11.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="reducedfrom">$66.00</span>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 shop_box">
-							<a href="single.html">
-								<img
-									src="resources/images/pic12.jpg"
-									class="img-responsive"
-									alt=""
-								/>
-								<span class="new-box">
-									<span class="new-label">New</span>
-								</span>
-								<span class="sale-box">
-									<span class="sale-label">Sale!</span>
-								</span>
-								<div class="shop_desc">
-									<h3><a href="#">aliquam volutp</a></h3>
-									<p>Lorem ipsum consectetuer adipiscing</p>
-									<span class="reducedfrom">$66.00</span>
-									<span class="actual">$12.00</span><br />
-									<ul class="buttons">
-										<li class="cart"><a href="#">Add To Cart</a></li>
-										<li class="shop_btn"><a href="#">Read More</a></li>
-										<div class="clear"></div>
-									</ul>
-								</div>
-							</a>
-						</div>
+						<c:forEach items="${products}" var="product">
+							<div class="col-md-3 shop_box">
+								<a href="single.html">
+									<img
+										src="${product.imageUrl}"
+										class="img-responsive"
+										alt=""
+									/>
+									<span class="new-box">
+										<span class="new-label">New</span>
+									</span>
+									<span class="sale-box">
+										<span class="sale-label">Sale!</span>
+									</span>
+									<div class="shop_desc">
+										<h3><a href="#">aliquam volutp</a></h3>
+										<p>Lorem ipsum consectetuer adipiscing</p>
+										<span class="reducedfrom">$66.00</span>
+										<span class="actual">$12.00</span><br />
+										<ul class="buttons">
+											<li class="cart"><a href="#">Add To Cart</a></li>
+											<li class="shop_btn"><a href="#">Read More</a></li>
+											<div class="clear"></div>
+										</ul>
+									</div>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -511,3 +340,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</body>
 </html>
+
