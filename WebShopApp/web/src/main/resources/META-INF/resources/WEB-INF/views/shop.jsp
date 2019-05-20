@@ -186,11 +186,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="shop_desc">
 										<h3><a href="#">aliquam volutp</a></h3>
 										<p>Lorem ipsum consectetuer adipiscing</p>
-										<span class="reducedfrom">$66.00</span>
-										<span class="actual">$12.00</span><br />
+										<span class="reducedfrom">$${product.price}</span>
+										<span class="actual">$${product.discountPrice}</span><br />
 										<ul class="buttons">
-											<li class="cart"><a href="#">Add To Cart</a></li>
-											<li class="shop_btn"><a href="#">Read More</a></li>
+											<li class="shop_btn"><a href="/products/${product.id}">View More</a></li>
 											<div class="clear"></div>
 										</ul>
 									</div>

@@ -4,8 +4,10 @@ import com.ivans.webshop.repository.enums.ProductCategory;
 
 public class ProductDTO {
 
+    private Integer id;
     private String name;
     private String imageUrl;
+    private double discountPrice;
     private double price;
     private double tax;
     private double discount;
@@ -13,6 +15,22 @@ public class ProductDTO {
     private CompanyDTO company;
 
     public ProductDTO() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public double getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void setDiscountPrice(double discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
     public String getImageUrl() {
