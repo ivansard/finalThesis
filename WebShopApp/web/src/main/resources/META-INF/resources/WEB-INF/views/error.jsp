@@ -5,13 +5,13 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 <html>
 	<head>
 		<title>Free Snow Bootstrap Website Template | Checkout :: w3layouts</title>
 		<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<link href="resources/css/style.css" rel="stylesheet" type="text/css" />
-        <link href="resources/css/table.css" rel="stylesheet" type="text/css" />
-        <link href="resources/css/paymentDetails.css" rel="stylesheet" type="text/css" />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -25,9 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="application/x-javascript">
 			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 		</script>
-
-        <script src="resources/js/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="resources/js/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.dropdown img.flag').addClass('flagvisibility');
@@ -68,20 +66,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-12">
 						<div class="header-left">
 							<div class="logo">
-								<a href="index.html"><img src="resources/images/logo.png" alt=""/></a>
+                                <a href="/"><img src="/resources/images/logo.png" alt=""/></a>
 							</div>
 							<div class="menu">
 								<a class="toggleMenu" href="#"
 									><img src="resources/images/nav.png" alt=""
 								/></a>
 								<ul class="nav" id="nav">
-									<li><a href="shop.html">Shop</a></li>
-									<li><a href="team.html">Team</a></li>
-									<li><a href="shop.html">Events</a></li>
-									<li><a href="experiance.html">Experiance</a></li>
-									<li><a href="shop.html">Company</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<div class="clear"></div>
+									<li><a href="/shop">Shop</a></li>
+									<li><a href="/">Company</a></li>
+									<c:choose>
+                                        <c:when test="${sessionScope.loggedUser == null}">
+                                            <li><a href="/login">Login</a></li>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <li><a href="/profile">Profile</a></li>
+                                            <li><a href="/users/logout">Log Out</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+
 								</ul>
 								<script
 									type="text/javascript"
@@ -118,11 +122,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a class="active-icon c1" href="#"> </a>
 									<ul class="sub-icon1 list">
 										<div class="product_control_buttons">
-											<a href="#"><img src="resources/images/edit.png" alt=""/></a>
-											<a href="#"><img src="resources/images/close_edit.png" alt=""/></a>
+											<a href="#"
+												><img src="resources/images/edit.png" alt=""
+											/></a>
+											<a href="#"
+												><img src="resources/images/close_edit.png" alt=""
+											/></a>
 										</div>
 										<div class="clear"></div>
-										<li class="list_img"><img src="resources/images/1.jpg" alt="" /></li>
+										<li class="list_img">
+											<img src="resources/images/1.jpg" alt="" />
+										</li>
 										<li class="list_desc">
 											<h4><a href="#">velit esse molestie</a></h4>
 											<span class="actual">1 x $12.00</span>
@@ -149,64 +159,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="main">
 			<div class="shop_top">
 				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-md-9">
-						    <div class="creditCardForm">
-                                <div class="heading">
-                                    <h1>Payment Details</h1>
-                                </div>
-                                <div class="payment">
-                                    <form>
-                                        <div class="form-group owner">
-                                            <label for="owner">Owner</label>
-                                            <input type="text" class="form-control" id="owner">
-                                        </div>
-                                        <div class="form-group CVV">
-                                            <label for="cvv">CVV</label>
-                                            <input type="text" class="form-control" id="cvv">
-                                        </div>
-                                        <div class="form-group" id="card-number-field">
-                                            <label for="cardNumber">Card Number</label>
-                                            <input type="text" class="form-control" id="cardNumber">
-                                        </div>
-                                        <div class="form-group" id="expiration-date">
-                                            <label>Expiration Date</label>
-                                            <select>
-                                                <option value="01">January</option>
-                                                <option value="02">February </option>
-                                                <option value="03">March</option>
-                                                <option value="04">April</option>
-                                                <option value="05">May</option>
-                                                <option value="06">June</option>
-                                                <option value="07">July</option>
-                                                <option value="08">August</option>
-                                                <option value="09">September</option>
-                                                <option value="10">October</option>
-                                                <option value="11">November</option>
-                                                <option value="12">December</option>
-                                            </select>
-                                            <select>
-                                                <option value="16"> 2016</option>
-                                                <option value="17"> 2017</option>
-                                                <option value="18"> 2018</option>
-                                                <option value="19"> 2019</option>
-                                                <option value="20"> 2020</option>
-                                                <option value="21"> 2021</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" id="credit_cards">
-                                            <img src="/resources/images/visa.jpg" id="visa">
-                                            <img src="/resources/images/mastercard.jpg" id="mastercard">
-                                            <img src="/resources/images/amex.jpg" id="amex">
-                                        </div>
-                                        <div class="form-group" id="pay-now">
-                                            <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-						</div>
-					</div>
+					<h1 class="title">Ooops, an error occured</h1>
+					<hr />
+					<h2 class="title">Error message is bellow</h2>
+					<h3 class="title">Error message: ${message}</h3>
 				</div>
 			</div>
 		</div>
@@ -347,7 +303,5 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-        <script src="resources/js/jquery.payform.min.js"></script>
-        <script src="resources/js/paymentDetails.js"></script>
 	</body>
 </html>

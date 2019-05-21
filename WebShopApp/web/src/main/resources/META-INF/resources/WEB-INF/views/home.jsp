@@ -72,7 +72,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 <c:choose>
                                     <c:when test="${sessionScope.loggedUser == null}">
-                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="/login">Login</a></li>
+                                        <li><a href="/register">Register</a></li>
                                     </c:when>
 
                                     <c:otherwise>
