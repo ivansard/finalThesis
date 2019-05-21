@@ -15,6 +15,8 @@ public interface ILineItemService {
 
     LineItemDTO getLineItemById(Integer id) throws Exception;
 
+    LineItemEntity addLineItem(LineItemEntity lineItem);
+
     LineItemEntity updateLineItem(LineItemEntity lineItem, Integer id) throws Exception;
 
     void deleteLineItem(Integer id) throws Exception;

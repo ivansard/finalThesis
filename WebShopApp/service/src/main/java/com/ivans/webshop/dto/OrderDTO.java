@@ -12,7 +12,7 @@ public class OrderDTO {
     private OrderStatus status;
     private double total;
     private List<LineItemDTO> lineItems;
-    private PaymentDTO payment;
+//    private PaymentDTO payment;
 
     public LocalDate getOrdered() {
         return ordered;
@@ -54,11 +54,11 @@ public class OrderDTO {
         this.lineItems = lineItems;
     }
 
-    public PaymentDTO getPayment() {
-        return payment;
-    }
-
-    public void setPayment(PaymentDTO payment) {
-        this.payment = payment;
-    }
+//    public PaymentDTO getPayment() {
+//        return payment;
+//    }
+//
+//    public void setPayment(PaymentDTO payment) {
+//        this.payment = payment;
+//    }
 }

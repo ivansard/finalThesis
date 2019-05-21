@@ -18,6 +18,8 @@ public interface IProductService {
 
     ProductDTO getProductById(Integer productId) throws Exception;
 
+    ProductEntity getProductById(Integer productId, String dummy) throws Exception;
+
     ProductEntity updateProduct(ProductEntity product, Integer productId) throws Exception;
 
     void deleteProduct(Integer productId) throws Exception;

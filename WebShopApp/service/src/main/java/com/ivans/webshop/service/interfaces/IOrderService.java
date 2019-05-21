@@ -27,5 +27,7 @@ public interface IOrderService {
 
     List<OrderDTO> getByAccountId(Integer accountId);
 
-    OrderDTO getByPaymentId(Integer paymentId) throws Exception;
+//    OrderDTO getByPaymentId(Integer paymentId) throws Exception;
+
+    OrderEntity addOrder(OrderEntity order);
 }

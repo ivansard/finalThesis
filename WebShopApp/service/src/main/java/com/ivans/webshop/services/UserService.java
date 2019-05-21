@@ -46,8 +46,6 @@ public class UserService implements IUserService {
             throw new Exception("User with submitted username does not exist");
         }
         UserDTO userToReturn = userMapper.user2DTO(user);
-        System.out.println("Password inside service");
-        System.out.println(userToReturn.getPassword());
         return userToReturn;
     }
 

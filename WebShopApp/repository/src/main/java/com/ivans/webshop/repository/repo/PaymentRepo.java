@@ -16,7 +16,7 @@ public interface PaymentRepo extends JpaRepository<PaymentEntity, Integer> {
 
     List<PaymentEntity> findByPaymentDetailsCardNumber(String cardNumber);
 
-    PaymentEntity findByOrderId(Integer orderId);
+//    PaymentEntity findByOrderId(Integer orderId);
 
 
 }

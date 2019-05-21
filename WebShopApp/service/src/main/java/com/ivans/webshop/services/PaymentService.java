@@ -68,14 +68,15 @@ public class PaymentService implements IPaymentService {
         return paymentMapper.payment2DTO(payment);
     }
 
-    @Override
-    public PaymentDTO getByOrderId(Integer orderId) throws Exception {
-        PaymentEntity payment = paymentRepo.findByOrderId(orderId);
-        if(payment.equals(null)){
-            throw new Exception("Payment with submitted ID does not exist");
-        }
-        return paymentMapper.payment2DTO(payment);
-    }
+//    @Override
+//    public PaymentDTO getByOrderId(Integer orderId) throws Exception {
+////        PaymentEntity payment = paymentRepo.findByOrderId(orderId);
+//        return null;
+//        if(payment.equals(null)){
+//            throw new Exception("Payment with submitted ID does not exist");
+//        }
+//        return paymentMapper.payment2DTO(payment);
+//    }
 
     public PaymentEntity updatePayment(PaymentEntity payment, Integer paymentId) throws Exception {
         PaymentEntity paymentInDb = paymentRepo.findById(paymentId).orElse(null);

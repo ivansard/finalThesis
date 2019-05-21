@@ -74,7 +74,8 @@ public class OrderController {
     @GetMapping("/orders/payment/{paymentId}")
     public OrderDTO getByPaymentId(@PathVariable Integer paymentId) throws Exception {
         try{
-            return orderService.getByPaymentId(paymentId);
+//            return orderService.getByPaymentId(paymentId);
+            return null;
         } catch (Exception ex){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order with submitted payment does not exist", ex);
         }

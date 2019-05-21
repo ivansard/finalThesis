@@ -20,7 +20,7 @@ public interface OrderRepo extends JpaRepository<OrderEntity, Integer> {
 
     List<OrderEntity> findByAccountId(Integer accountId);
 
-    OrderEntity findByPaymentId(Integer paymentId);
+//    OrderEntity findByPaymentId(Integer paymentId);
 
 
 }

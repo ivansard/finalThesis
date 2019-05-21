@@ -17,8 +17,8 @@ public class PaymentDetailsEntity {
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
     private String securityCode;
-    @OneToMany(mappedBy = "paymentDetails")
-    private List<PaymentEntity> payments = new ArrayList<PaymentEntity>();
+//    @OneToMany(mappedBy = "paymentDetails")
+//    private List<PaymentEntity> payments = new ArrayList<PaymentEntity>();
     @ManyToOne
     @JoinColumn(name = "account_id")
     private AccountEntity account;
@@ -26,20 +26,18 @@ public class PaymentDetailsEntity {
     public PaymentDetailsEntity() {
     }
 
-    public PaymentDetailsEntity(String cardNumber, Date expirationDate, String securityCode, List<PaymentEntity> payments, AccountEntity account) {
-        this.cardNumber = cardNumber;
-        this.expirationDate = expirationDate;
-        this.securityCode = securityCode;
-        this.payments = payments;
-        this.account = account;
-    }
-
-    public PaymentDetailsEntity(Integer id, String cardNumber, Date expirationDate, String securityCode, List<PaymentEntity> payments, AccountEntity account) {
+    public PaymentDetailsEntity(Integer id, String cardNumber, Date expirationDate, String securityCode, AccountEntity account) {
         this.id = id;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
-        this.payments = payments;
+        this.account = account;
+    }
+
+    public PaymentDetailsEntity(String cardNumber, Date expirationDate, String securityCode, AccountEntity account) {
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
+        this.securityCode = securityCode;
         this.account = account;
     }
 
@@ -83,11 +81,11 @@ public class PaymentDetailsEntity {
         this.securityCode = securityCode;
     }
 
-    public List<PaymentEntity> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<PaymentEntity> payments) {
-        this.payments = payments;
-    }
+//    public List<PaymentEntity> getPayments() {
+//        return payments;
+//    }
+//
+//    public void setPayments(List<PaymentEntity> payments) {
+//        this.payments = payments;
+//    }
 }

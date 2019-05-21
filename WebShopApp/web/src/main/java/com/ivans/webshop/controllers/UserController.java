@@ -49,7 +49,7 @@ public class UserController {
             AccountEntity account = new AccountEntity();
             account.setUser(webUser);
             account.setName(webUser.getUsername());
-            accountService.saveAccount(account);
+            account = accountService.saveAccount(account);
 
 //            Creating shopping cart for new registered user who is now logged int
             ShoppingCart shoppingCart = new ShoppingCart();

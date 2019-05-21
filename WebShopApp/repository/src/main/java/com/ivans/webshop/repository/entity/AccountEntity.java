@@ -31,26 +31,25 @@ public class AccountEntity {
     public AccountEntity() {
     }
 
-    public AccountEntity(String name, boolean isClosed, Date opened, Date closed, WebUserEntity user, List<PaymentDetailsEntity> paymentDetails, List<OrderEntity> orders) {
-        this.name = name;
-        this.isClosed = isClosed;
-        this.opened = opened;
-        this.closed = closed;
-        this.user = user;
-        this.paymentDetails = paymentDetails;
-        this.orders = orders;
+    public AccountEntity(Integer id) {
+        this.id = id;
     }
 
-
-    public AccountEntity(Integer id, String name, boolean isClosed, Date opened, Date closed, WebUserEntity user, List<PaymentDetailsEntity> paymentDetails, List<OrderEntity> orders) {
+    public AccountEntity(Integer id, String name, boolean isClosed, Date opened, Date closed, WebUserEntity user) {
         this.id = id;
         this.name = name;
         this.isClosed = isClosed;
         this.opened = opened;
         this.closed = closed;
         this.user = user;
-        this.paymentDetails = paymentDetails;
-        this.orders = orders;
+    }
+
+    public AccountEntity(String name, boolean isClosed, Date opened, Date closed, WebUserEntity user) {
+        this.name = name;
+        this.isClosed = isClosed;
+        this.opened = opened;
+        this.closed = closed;
+        this.user = user;
     }
 
     public Integer getId() {

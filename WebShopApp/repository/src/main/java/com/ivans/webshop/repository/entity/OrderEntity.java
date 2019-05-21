@@ -24,8 +24,8 @@ public class OrderEntity {
     private double total;
     @OneToMany(mappedBy  = "order")
     private List<LineItemEntity> lineItems = new ArrayList<LineItemEntity>();
-    @OneToOne
-    private PaymentEntity payment;
+//    @OneToOne
+//    private PaymentEntity payment;
     @ManyToOne
     @JoinColumn(name = "account_id")
     private AccountEntity account;
@@ -33,32 +33,28 @@ public class OrderEntity {
     public OrderEntity() {
     }
 
-    public OrderEntity(Date ordered, Date shipped, OrderStatus status, double total, List<LineItemEntity> lineItems, PaymentEntity payment, AccountEntity account) {
-        this.ordered = ordered;
-        this.shipped = shipped;
-        this.status = status;
-        this.total = total;
-        this.lineItems = lineItems;
-        this.payment = payment;
-        this.account = account;
-    }
-
-    public OrderEntity(Integer id, Date ordered, Date shipped, OrderStatus status, double total, List<LineItemEntity> lineItems, PaymentEntity payment, AccountEntity account) {
+    public OrderEntity(Integer id, Date ordered, Date shipped, OrderStatus status, double total, AccountEntity account) {
         this.id = id;
         this.ordered = ordered;
         this.shipped = shipped;
         this.status = status;
         this.total = total;
-        this.lineItems = lineItems;
-        this.payment = payment;
         this.account = account;
     }
 
-    public int getId() {
+    public OrderEntity(Date ordered, Date shipped, OrderStatus status, double total, AccountEntity account) {
+        this.ordered = ordered;
+        this.shipped = shipped;
+        this.status = status;
+        this.total = total;
+        this.account = account;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -110,11 +106,11 @@ public class OrderEntity {
         this.lineItems = lineItems;
     }
 
-    public PaymentEntity getPayment() {
-        return payment;
-    }
-
-    public void setPayment(PaymentEntity payment) {
-        this.payment = payment;
-    }
+//    public PaymentEntity getPayment() {
+//        return payment;
+//    }
+//
+//    public void setPayment(PaymentEntity payment) {
+//        this.payment = payment;
+//    }
 }

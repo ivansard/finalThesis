@@ -15,8 +15,8 @@ public class PaymentEntity {
     private Date paidDate;
     private double total;
     private String details;
-    @OneToOne(mappedBy = "payment")
-    private OrderEntity order;
+//    @OneToOne(mappedBy = "payment")
+//    private OrderEntity order;
     @ManyToOne
     @JoinColumn(name = "payment_details_id")
     private PaymentDetailsEntity paymentDetails;
@@ -58,13 +58,13 @@ public class PaymentEntity {
         this.details = details;
     }
 
-    public OrderEntity getOrder() {
-        return order;
-    }
-
-    public void setOrder(OrderEntity order) {
-        this.order = order;
-    }
+//    public OrderEntity getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(OrderEntity order) {
+//        this.order = order;
+//    }
 
     public PaymentDetailsEntity getPaymentDetails() {
         return paymentDetails;

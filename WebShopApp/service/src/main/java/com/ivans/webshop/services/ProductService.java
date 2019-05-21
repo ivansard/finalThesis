@@ -72,6 +72,15 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public ProductEntity getProductById(Integer productId, String dummy) throws Exception {
+        ProductEntity product = productRepo.findById(productId).orElse(null);
+        if(product.equals(null)){
+            throw new Exception("Product with submitted ID does not exist");
+        }
+        return product;
+    }
+
+    @Override
     public ProductEntity updateProduct(ProductEntity product, Integer productId) throws Exception {
         ProductEntity productInDb = productRepo.findById(productId).orElse(null);
         if (productInDb.equals(null)) {

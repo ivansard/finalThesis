@@ -59,6 +59,11 @@ public class LineItemService implements ILineItemService {
     }
 
     @Override
+    public LineItemEntity addLineItem(LineItemEntity lineItem) {
+        return lineItemRepo.save(lineItem);
+    }
+
+    @Override
     public LineItemEntity updateLineItem(LineItemEntity lineItem, Integer id) throws Exception {
         LineItemEntity lineItemInDb = lineItemRepo.findById(id).orElse(null);
         if (lineItemInDb.equals(null)) {

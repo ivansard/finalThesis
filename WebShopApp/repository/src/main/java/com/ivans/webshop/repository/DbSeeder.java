@@ -1,9 +1,11 @@
 package com.ivans.webshop.repository;
 
 import com.ivans.webshop.repository.entity.*;
+import com.ivans.webshop.repository.enums.OrderStatus;
 import com.ivans.webshop.repository.enums.ProductCategory;
 import com.ivans.webshop.repository.enums.UserState;
 import com.ivans.webshop.repository.repo.CompanyRepo;
+import com.ivans.webshop.repository.repo.OrderRepo;
 import com.ivans.webshop.repository.repo.ProductRepo;
 import com.ivans.webshop.repository.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -22,6 +25,8 @@ public class DbSeeder implements CommandLineRunner {
     private CompanyRepo companyRepo;
     @Autowired
     private ProductRepo productRepo;
+    @Autowired
+    private OrderRepo orderRepo;
 
 
     @Override
@@ -40,6 +45,8 @@ public class DbSeeder implements CommandLineRunner {
 //        ProductEntity p4 = new ProductEntity("Snowboard 2","/resources/images/8", 290, 0.4, 0.1, null, com1);
 //        ProductEntity p2 = new ProductEntity("Ski Hoodie","/resources/images/board5", 290, 0.4, 0.1, null, com2);
 //        ProductEntity p3 = new ProductEntity("Ski Set","/resources/images/e1", 290, 0.4, 0.1, null, com3);
+
+        OrderEntity o1 = new OrderEntity(new Date(), null, OrderStatus.NEW, 3000, new AccountEntity(3));
 
         ProductEntity p1 = new ProductEntity("Snowboard 1", "/resources/images/3.jpg", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
         ProductEntity p2 = new ProductEntity("Snowboard 2","/resources/images/8.jpg", 290, 0.4, 0.1, ProductCategory.SNOWBOARDS, com1);
@@ -65,6 +72,7 @@ public class DbSeeder implements CommandLineRunner {
         companyRepo.saveAll(companies);
         userRepo.saveAll(users);
         productRepo.saveAll(products);
+        orderRepo.save(o1);
 
     }
 }

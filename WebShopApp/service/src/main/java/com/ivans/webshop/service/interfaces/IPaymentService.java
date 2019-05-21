@@ -20,7 +20,7 @@ public interface IPaymentService {
 
     PaymentDTO getPaymentById(Integer paymentId) throws Exception;
 
-    PaymentDTO getByOrderId(Integer orderId) throws Exception;
+//    PaymentDTO getByOrderId(Integer orderId) throws Exception;
 
     PaymentEntity updatePayment(PaymentEntity payment, Integer paymentId) throws Exception;
 

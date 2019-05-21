@@ -91,11 +91,17 @@ public class OrderService implements IOrderService {
         orderRepo.deleteById(id);
     }
 
-    public OrderDTO getByPaymentId(Integer paymentId) throws Exception {
-        OrderEntity orderInDb = orderRepo.findByPaymentId(paymentId);
-        if (orderInDb.equals(null)) {
-            throw new Exception("Line item with submitted ID does not exist");
-        }
-        return orderMapper.order2DTO(orderInDb);
+//    public OrderDTO getByPaymentId(Integer paymentId) throws Exception {
+//        OrderEntity orderInDb = orderRepo.findByPaymentId(paymentId);
+//        if (orderInDb.equals(null)) {
+//            throw new Exception("Line item with submitted ID does not exist");
+//        }
+//        return orderMapper.order2DTO(orderInDb);
+//    }
+
+    @Override
+    public OrderEntity addOrder(OrderEntity order) {
+        OrderEntity savedOrder = orderRepo.save(order);
+        return savedOrder;
     }
 }
