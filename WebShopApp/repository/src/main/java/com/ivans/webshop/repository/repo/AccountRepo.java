@@ -10,6 +10,8 @@ public interface AccountRepo extends JpaRepository<AccountEntity, Integer> {
 
     AccountEntity findByUserUsername(String username);
 
+    AccountEntity findByName(String name);
+
 
 
 }

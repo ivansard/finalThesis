@@ -50,6 +50,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserEntity getUserByUsername(String username, String dummy) throws Exception {
+        UserEntity user = userRepository.findByUsername(username);
+        if(user.equals(null)){
+            throw new Exception("User with submitted username does not exist");
+        }
+        return user;
+    }
+
+    @Override
     public UserEntity addUser(UserEntity user) throws Exception {
         if(userRepository.findByUsername(user.getUsername()) != null){
             throw new Exception("User with submitted username already exists");

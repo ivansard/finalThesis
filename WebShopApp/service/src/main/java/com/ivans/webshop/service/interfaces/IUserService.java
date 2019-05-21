@@ -13,6 +13,8 @@ public interface IUserService {
 
     UserDTO getUserByUsername(String username) throws Exception;
 
+    UserEntity getUserByUsername(String username, String dummy) throws Exception;
+
     UserEntity addUser(UserEntity user) throws Exception;
 
     UserEntity updateUser(UserEntity user, Integer id) throws Exception;

@@ -16,6 +16,8 @@ public interface IAccountService {
 
     AccountDTO getAccountByUsername(String username) throws Exception;
 
+    AccountEntity getAccountByUsername(String username, String dummy) throws Exception;
+
     AccountEntity updateAccount(AccountEntity user, Integer id) throws Exception;
 
     AccountEntity updateAccount(AccountEntity user, String username) throws Exception;

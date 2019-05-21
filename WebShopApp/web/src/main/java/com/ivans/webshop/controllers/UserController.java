@@ -71,14 +71,16 @@ public class UserController {
     public UserDTO loginUser(@RequestParam String username, @RequestParam String password, HttpServletResponse httpResponse, HttpServletRequest httpRequest) throws IOException {
         try {
 //          Searching for user by username and then checking his password
-            UserDTO user = userService.getUserByUsername(username);
+            UserEntity user = userService.getUserByUsername(username, "null");
             if(!user.getPassword().equals(password)){
                 throw new Exception("Invalid password!");
             }
 //            If the user is successfully authenticated, generate a shopping cart and set both him and the cart into the active session
+            AccountEntity account = accountService.getAccountByUsername(user.getUsername(), null);
             ShoppingCart shoppingCart = new ShoppingCart();
             httpRequest.getSession().setAttribute("loggedUser", user);
             httpRequest.getSession().setAttribute("cart", shoppingCart);
+            httpRequest.getSession().setAttribute("account", account);
 //          Redirect to home page
             httpResponse.sendRedirect("/");
         } catch (Exception e) {

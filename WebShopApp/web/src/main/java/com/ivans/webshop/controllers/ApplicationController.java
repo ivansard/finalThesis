@@ -94,12 +94,11 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
-    public String placeOrder(HttpServletResponse response, HttpSession session) throws Exception {
+    public void placeOrder(HttpServletResponse response, HttpSession session) throws Exception {
 //        Uzeti lineIteme iz carta koji je u sesiji
         ShoppingCart activeCart = (ShoppingCart) session.getAttribute("cart");
         AccountEntity activeAccount = (AccountEntity) session.getAttribute("account");
-        System.out.println("ACCOUNT");
-        System.out.println(activeAccount);
+
         List<LineItemEntity> lineItems = activeCart.getLineItems();
         double orderPrice = calculateTotalOrderPrice(lineItems);
 //        Napraviti order za te lineIteme
@@ -114,8 +113,13 @@ public class ApplicationController {
         ) {
             lineItemService.addLineItem(lineItem);
         }
-//        Vratiti na profile page
-        return "profile";
+//        Posalji na stranicu da vidi sve svoje ordere
+        response.sendRedirect("/orders");
+    }
+
+    @RequestMapping(value = "/orders")
+    public String renderOrdersPage(HttpSession session){
+        return "orders";
     }
 
     public static double calculateTotalOrderPrice(List<LineItemEntity> lineItems){

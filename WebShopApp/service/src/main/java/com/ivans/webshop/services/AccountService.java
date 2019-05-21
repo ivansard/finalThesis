@@ -34,7 +34,7 @@ public class AccountService implements IAccountService {
     @Override
     public AccountDTO getAccountById(Integer accountId) throws Exception {
         AccountEntity account = accountRepo.findById(accountId).orElse(null);
-        if(account.equals(null)){
+        if(account == null){
             throw new Exception("Account with submitted ID does not exist");
         }
         return accountMapper.account2DTO(account);
@@ -42,17 +42,26 @@ public class AccountService implements IAccountService {
 
     @Override
     public AccountDTO getAccountByUsername(String username) throws Exception {
-        AccountEntity account = accountRepo.findByUserUsername(username);
-        if(account.equals(null)){
+        AccountEntity account = accountRepo.findByName(username);
+        if(account == null){
             throw new Exception("Account for submitted username does not exist");
         }
         return accountMapper.account2DTO(account);
     }
 
     @Override
+    public AccountEntity getAccountByUsername(String username, String dummy) throws Exception {
+        AccountEntity account = accountRepo.findByName(username);
+        if(account == null){
+            throw new Exception("Account for submitted username does not exist");
+        }
+        return account;
+    }
+
+    @Override
     public AccountEntity updateAccount(AccountEntity account, Integer accountId) throws Exception {
         AccountEntity accountInDb = accountRepo.findById(accountId).orElse(null);
-        if (accountInDb.equals(null)) {
+        if (accountInDb == null) {
             throw new Exception("Account with submitted ID does not exist");
         }
         account.setId(accountInDb.getId());
@@ -62,7 +71,7 @@ public class AccountService implements IAccountService {
     @Override
     public AccountEntity updateAccount(AccountEntity account, String username) throws Exception {
         AccountEntity accountInDb = accountRepo.findByUserUsername(username);
-        if (accountInDb.equals(null)) {
+        if (accountInDb == null) {
             throw new Exception("Account with submitted ID does not exist");
         }
         account.setId(accountInDb.getId());
@@ -77,7 +86,7 @@ public class AccountService implements IAccountService {
     @Override
     public void deleteAccount(String username) throws Exception {
         AccountEntity accountInDb = accountRepo.findByUserUsername(username);
-        if (accountInDb.equals(null)) {
+        if (accountInDb == null) {
             throw new Exception("Account with submitted ID does not exist");
         }
         accountRepo.deleteById(accountInDb.getId());
@@ -87,7 +96,7 @@ public class AccountService implements IAccountService {
     @Override
     public void deleteAccount(Integer accountId) throws Exception {
         AccountEntity accountInDb = accountRepo.findById(accountId).orElse(null);
-        if (accountInDb.equals(null)) {
+        if (accountInDb == null) {
             throw new Exception("Account with submitted ID does not exist");
         }
         accountRepo.deleteById(accountId);

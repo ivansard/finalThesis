@@ -5,16 +5,26 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 <html>
 	<head>
 		<title>Free Snow Bootstrap Website Template | Checkout :: w3layouts</title>
-		<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
-		<link href="resources/css/style.css" rel="stylesheet" type="text/css" />
-        <link href="resources/css/table.css" rel="stylesheet" type="text/css" />
+		<link
+			href="/resources/css/bootstrap.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link href="/resources/css/style.css" rel="stylesheet" type="text/css" />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1"
 		/>
+        <link
+            href="/resources/css/table.css"
+            rel="stylesheet"
+            type="text/css"
+        />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link
 			href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800"
@@ -24,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="application/x-javascript">
 			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 		</script>
-		<script src="resources/js/jquery.min.js"></script>
+		<script src="/resources/js/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.dropdown img.flag').addClass('flagvisibility');
@@ -65,24 +75,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-12">
 						<div class="header-left">
 							<div class="logo">
-								<a href="index.html"><img src="resources/images/logo.png" alt=""/></a>
+								<a href="index.html"
+									><img src="/resources/images/logo.png" alt=""
+								/></a>
 							</div>
 							<div class="menu">
 								<a class="toggleMenu" href="#"
-									><img src="resources/images/nav.png" alt=""
+									><img src="/resources/images/nav.png" alt=""
 								/></a>
 								<ul class="nav" id="nav">
-									<li><a href="shop.html">Shop</a></li>
-									<li><a href="team.html">Team</a></li>
-									<li><a href="shop.html">Events</a></li>
-									<li><a href="experiance.html">Experiance</a></li>
-									<li><a href="shop.html">Company</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<div class="clear"></div>
+									<li><a href="/shop">Shop</a></li>
+                                    <li><a href="/">Company</a></li>
+                                    <div class="clear"></div>
 								</ul>
 								<script
 									type="text/javascript"
-									src="resources/js/responsive-nav.js"
+									src="/resources/js/responsive-nav.js"
 								></script>
 							</div>
 							<div class="clear"></div>
@@ -105,8 +113,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div>
 							</div>
 							<!----search-scripts---->
-							<script src="resources/js/classie.js"></script>
-							<script src="resources/js/uisearch.js"></script>
+							<script src="/resources/js/classie.js"></script>
+							<script src="/resources/js/uisearch.js"></script>
 							<script>
 								new UISearch(document.getElementById('sb-search'));
 							</script>
@@ -115,11 +123,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a class="active-icon c1" href="#"> </a>
 									<ul class="sub-icon1 list">
 										<div class="product_control_buttons">
-											<a href="#"><img src="resources/images/edit.png" alt=""/></a>
-											<a href="#"><img src="resources/images/close_edit.png" alt=""/></a>
+											<a href="#"
+												><img src="/resources/images/edit.png" alt=""
+											/></a>
+											<a href="#"
+												><img src="/resources/images/close_edit.png" alt=""
+											/></a>
 										</div>
 										<div class="clear"></div>
-										<li class="list_img"><img src="resources/images/1.jpg" alt="" /></li>
+										<li class="list_img">
+											<img src="/resources/images/1.jpg" alt="" />
+										</li>
 										<li class="list_desc">
 											<h4><a href="#">velit esse molestie</a></h4>
 											<span class="actual">1 x $12.00</span>
@@ -146,81 +160,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="main">
 			<div class="shop_top">
 				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-md-9">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">
-										Payment Details
-									</h3>
-								</div>
-								<div class="panel-body">
-									<form role="form">
-										<div class="form-group">
-											<label for="cardNumber"> CARD NUMBER</label>
-											<div class="input-group">
-												<input
-													type="text"
-													class="form-control"
-													id="cardNumber"
-													placeholder="Valid Card Number"
-													required
-													autofocus
-												/>
-												<span class="input-group-addon"
-													><span class="glyphicon glyphicon-lock"></span
-												></span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-7 col-md-7">
-												<div class="form-group">
-													<label for="expityMonth"> EXPIRY DATE</label>
-													<div class="col-xs-6 col-lg-6 pl-ziro">
-														<input
-															type="text"
-															class="form-control"
-															id="expityMonth"
-															placeholder="MM"
-															required
-														/>
-													</div>
-													<div class="col-xs-6 col-lg-6 pl-ziro">
-														<input
-															type="text"
-															class="form-control"
-															id="expityYear"
-															placeholder="YY"
-															required
-														/>
-													</div>
-												</div>
-											</div>
-											<div class="col-xs-5 col-md-5 pull-right">
-												<div class="form-group">
-													<label for="cvCode"> CV CODE</label>
-													<input
-														type="password"
-														class="form-control"
-														id="cvCode"
-														placeholder="CV"
-														required
-													/>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-							<br />
-							<a
-								href="http://www.jquery2dotnet.com"
-								class="btn btn-success btn-lg btn-block"
-								role="button"
-								>Update Payment Method</a
-							>
-						</div>
-					</div>
+                    <c:choose>
+                        <c:when test="${sessionScope.cart == null}">
+                            <h4 class="title">Shopping cart is empty</h4>
+                            <p class="cart">
+                                You must be logged in order to create a shopping cart!<br />Click<a
+                                    href="/login"
+                                >
+                                    here</a
+                                >
+                                to login!
+                            </p>
+                        </c:when>
+
+                        <c:otherwise>
+                            <table border="1">
+                                <thead>
+                                    <tr>
+                                      <th>Order Number</th>
+                                      <th>Shipped</th>
+                                      <th>Delivered</th>
+                                      <th>Total</th>
+                                      <th>Status</th>
+                                    </tr>
+                                </thead>
+                              <tbody>
+                                 <c:forEach items="${sessionScope.account.orders}" var="order">
+                                    <tr>
+                                         <td>${order.id}</td>
+                                         <td>${order.ordered}</td>
+                                         <td>${order.shipped}</td>
+                                         <td>$${order.total}</td>
+                                         <td>${order.status}</td>
+                                    </tr>
+                                 </c:forEach>
+                              </tbody>
+                            </table>
+                        </c:otherwise>
+                    </c:choose>
 				</div>
 			</div>
 		</div>
@@ -305,7 +282,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Australia<img
 											class="flag"
-											src="resources/images/as.png"
+											src="/resources/images/as.png"
 											alt=""
 										/><span class="value">AS</span></a
 									>
@@ -314,7 +291,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Sri Lanka<img
 											class="flag"
-											src="resources/images/srl.png"
+											src="/resources/images/srl.png"
 											alt=""
 										/><span class="value">SL</span></a
 									>
@@ -323,7 +300,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Newziland<img
 											class="flag"
-											src="resources/images/nz.png"
+											src="/resources/images/nz.png"
 											alt=""
 										/><span class="value">NZ</span></a
 									>
@@ -332,7 +309,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Pakistan<img
 											class="flag"
-											src="resources/images/pk.png"
+											src="/resources/images/pk.png"
 											alt=""
 										/><span class="value">Pk</span></a
 									>
@@ -341,7 +318,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>United Kingdom<img
 											class="flag"
-											src="resources/images/uk.png"
+											src="/resources/images/uk.png"
 											alt=""
 										/><span class="value">UK</span></a
 									>
@@ -350,7 +327,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>United States<img
 											class="flag"
-											src="resources/images/us.png"
+											src="/resources/images/us.png"
 											alt=""
 										/><span class="value">US</span></a
 									>

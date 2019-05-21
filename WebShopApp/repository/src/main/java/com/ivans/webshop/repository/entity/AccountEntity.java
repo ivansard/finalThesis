@@ -25,7 +25,7 @@ public class AccountEntity {
     private WebUserEntity user;
     @OneToMany(mappedBy = "account")
     private List<PaymentDetailsEntity> paymentDetails = new ArrayList<PaymentDetailsEntity>();
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<OrderEntity> orders = new ArrayList<OrderEntity>();
 
     public AccountEntity() {

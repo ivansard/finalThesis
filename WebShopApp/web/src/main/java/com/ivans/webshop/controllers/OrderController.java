@@ -19,10 +19,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/orders")
-    public List<OrderDTO> getAllOrders(){
-        return orderService.getAllOrders();
-    }
+//    @GetMapping("/orders")
+//    public List<OrderDTO> getAllOrders(){
+//        return orderService.getAllOrders();
+//    }
 
     @GetMapping("/orders/{orderId}")
     public OrderDTO getOrderById(@PathVariable Integer orderId) throws Exception {

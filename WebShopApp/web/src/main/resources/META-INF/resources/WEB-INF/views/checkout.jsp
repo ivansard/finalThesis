@@ -20,6 +20,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1"
 		/>
+        <link
+            href="/resources/css/table.css"
+            rel="stylesheet"
+            type="text/css"
+        />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link
 			href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800"
@@ -79,13 +84,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									><img src="/resources/images/nav.png" alt=""
 								/></a>
 								<ul class="nav" id="nav">
-									<li><a href="shop.html">Shop</a></li>
-									<li><a href="team.html">Team</a></li>
-									<li><a href="shop.html">Events</a></li>
-									<li><a href="experiance.html">Experiance</a></li>
-									<li><a href="shop.html">Company</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<div class="clear"></div>
+									<li><a href="/shop">Shop</a></li>
+                                    <li><a href="/">Company</a></li>
+                                    <div class="clear"></div>
 								</ul>
 								<script
 									type="text/javascript"
@@ -186,7 +187,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <tr>
                                          <td>${lineItem.product.name}</td>
                                          <td>${lineItem.quantity}</td>
-                                         <td>${lineItem.totalPrice}</td>
+                                         <td>$${lineItem.totalPrice}</td>
                                     </tr>
                                  </c:forEach>
                               </tbody>

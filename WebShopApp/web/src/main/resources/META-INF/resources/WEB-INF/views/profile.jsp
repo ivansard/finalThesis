@@ -71,13 +71,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									><img src="resources/images/nav.png" alt=""
 								/></a>
 								<ul class="nav" id="nav">
-									<li><a href="shop.html">Shop</a></li>
-									<li><a href="team.html">Team</a></li>
-									<li><a href="shop.html">Events</a></li>
-									<li><a href="experiance.html">Experiance</a></li>
-									<li><a href="shop.html">Company</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="/shop">Shop</a></li>
+									<li><a href="/">Company</a></li>
 									<div class="clear"></div>
+                                    <li><a href="/profile">Profile</a></li>
+                                    <li><a href="/users/logout">Log Out</a></li>
+
 								</ul>
 								<script
 									type="text/javascript"
