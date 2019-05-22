@@ -31,30 +31,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.dropdown img.flag').addClass('flagvisibility');
-
 				$('.dropdown dt a').click(function() {
 					$('.dropdown dd ul').toggle();
 				});
-
 				$('.dropdown dd ul li a').click(function() {
 					var text = $(this).html();
 					$('.dropdown dt a span').html(text);
 					$('.dropdown dd ul').hide();
 					$('#result').html('Selected value is: ' + getSelectedValue('sample'));
 				});
-
 				function getSelectedValue(id) {
 					return $('#' + id)
 						.find('dt a span.value')
 						.html();
 				}
-
 				$(document).bind('click', function(e) {
 					var $clicked = $(e.target);
 					if (!$clicked.parents().hasClass('dropdown'))
 						$('.dropdown dd ul').hide();
 				});
-
 				$('#flagSwitcher').click(function() {
 					$('.dropdown img.flag').toggleClass('flagvisibility');
 				});
@@ -156,18 +151,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <h1>Payment Details</h1>
                                 </div>
                                 <div class="payment">
-                                    <form>
+                                    <form method="POST" action="/paymentDetails">
                                         <div class="form-group owner">
                                             <label for="owner">Owner</label>
                                             <input type="text" class="form-control" id="owner">
                                         </div>
                                         <div class="form-group CVV">
                                             <label for="cvv">CVV</label>
-                                            <input type="text" class="form-control" id="cvv">
+                                            <input type="text" class="form-control" id="cvv" name="securityCode" value="${sessionScope.account.paymentDetails.securityCode}">
                                         </div>
                                         <div class="form-group" id="card-number-field">
                                             <label for="cardNumber">Card Number</label>
-                                            <input type="text" class="form-control" id="cardNumber">
+                                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" value="${sessionScope.account.paymentDetails.cardNumber}">
                                         </div>
                                         <div class="form-group" id="expiration-date">
                                             <label>Expiration Date</label>

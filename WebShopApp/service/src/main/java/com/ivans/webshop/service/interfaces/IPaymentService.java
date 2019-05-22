@@ -2,6 +2,7 @@ package com.ivans.webshop.service.interfaces;
 
 import com.ivans.webshop.dto.PaymentDTO;
 import com.ivans.webshop.repository.entity.PaymentEntity;
+import com.ivans.webshop.services.PaymentDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

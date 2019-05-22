@@ -10,13 +10,16 @@ public class AccountDTO {
     private LocalDate opened;
     private LocalDate closed;
     private List<OrderDTO> orders;
-    private List<PaymentDetailsDTO> paymentDetails;
+    private PaymentDetailsDTO paymentDetails;
 
-    public List<PaymentDetailsDTO> getPaymentDetails() {
+    public AccountDTO() {
+    }
+
+    public PaymentDetailsDTO getPaymentDetails() {
         return paymentDetails;
     }
 
-    public void setPaymentDetails(List<PaymentDetailsDTO> paymentDetails) {
+    public void setPaymentDetails(PaymentDetailsDTO paymentDetails) {
         this.paymentDetails = paymentDetails;
     }
 

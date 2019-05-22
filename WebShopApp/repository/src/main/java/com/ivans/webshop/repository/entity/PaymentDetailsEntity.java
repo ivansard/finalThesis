@@ -19,8 +19,8 @@ public class PaymentDetailsEntity {
     private String securityCode;
 //    @OneToMany(mappedBy = "paymentDetails")
 //    private List<PaymentEntity> payments = new ArrayList<PaymentEntity>();
-    @ManyToOne
-    @JoinColumn(name = "account_id")
+    @OneToOne
+    @JoinColumn(name = "account")
     private AccountEntity account;
 
     public PaymentDetailsEntity() {

@@ -7,6 +7,7 @@ import com.ivans.webshop.repository.entity.*;
 import com.ivans.webshop.repository.enums.OrderStatus;
 import com.ivans.webshop.services.LineItemService;
 import com.ivans.webshop.services.OrderService;
+import com.ivans.webshop.services.PaymentDetailsService;
 import com.ivans.webshop.services.ProductService;
 import com.ivans.webshop.util.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class ApplicationController {
     OrderService orderService;
     @Autowired
     LineItemService lineItemService;
+    @Autowired
+    PaymentDetailsService paymentDetailsService;
 
     @RequestMapping("/")
     public String homepage() {
@@ -52,12 +55,33 @@ public class ApplicationController {
         return "home";
     }
 
-    @RequestMapping("/paymentDetails")
+    @RequestMapping( value = "/paymentDetails", method = RequestMethod.GET)
     public String profilePaymentDetails(HttpServletRequest request) {
         if (request.getSession().getAttribute("loggedUser") != null) {
             return "paymentDetails";
         }
         return "home";
+    }
+
+
+    @RequestMapping( value = "/paymentDetails", method = RequestMethod.POST)
+    public String savePaymentDetails( @RequestParam ("securityCode") String securityCode, @RequestParam("cardNumber") String cardNumber, HttpServletRequest request, HttpSession session) {
+        try {
+            if (request.getSession().getAttribute("loggedUser") == null) {
+                return "home";
+            }
+
+            AccountEntity account = (AccountEntity) session.getAttribute("account");
+            PaymentDetailsEntity paymentDetails = new PaymentDetailsEntity(cardNumber, null, securityCode, account);
+
+            paymentDetails = paymentDetailsService.addPaymentDetails(paymentDetails);
+            account.setPaymentDetails(paymentDetails);
+
+            return "home";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
     }
 
     @RequestMapping("/shop")

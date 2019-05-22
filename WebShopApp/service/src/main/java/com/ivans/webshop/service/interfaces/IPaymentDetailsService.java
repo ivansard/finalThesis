@@ -19,5 +19,7 @@ public interface IPaymentDetailsService {
 
     PaymentDetailsEntity updatePaymentDetails(PaymentDetailsEntity paymentDetails, Integer paymentDetailsId) throws Exception;
 
+    PaymentDetailsEntity addPaymentDetails(PaymentDetailsEntity paymentDetails);
+
     void deletePaymentDetails(Integer paymentDetailsId) throws Exception;
 }

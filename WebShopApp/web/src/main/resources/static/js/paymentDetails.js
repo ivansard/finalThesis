@@ -36,19 +36,20 @@ cardNumber.keyup(function() {
 });
 
 confirmButton.click(function(e) {
-	e.preventDefault();
 
 	var isCardValid = $.payform.validateCardNumber(cardNumber.val());
 	var isCvvValid = $.payform.validateCardCVC(CVV.val());
 
 	if (owner.val().length < 5) {
+	    e.preventDefault();
 		alert('Wrong owner name');
 	} else if (!isCardValid) {
+	    e.preventDefault();
 		alert('Wrong card number');
 	} else if (!isCvvValid) {
+	    e.preventDefault();
 		alert('Wrong CVV');
 	} else {
-		// Everything is correct. Add your form submission code here.
-		alert('Everything is correct');
+		this.submit(); 
 	}
 });

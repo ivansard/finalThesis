@@ -23,8 +23,8 @@ public class AccountEntity {
     @OneToOne
     @JoinColumn(name = "user_id")
     private WebUserEntity user;
-    @OneToMany(mappedBy = "account")
-    private List<PaymentDetailsEntity> paymentDetails = new ArrayList<PaymentDetailsEntity>();
+    @OneToOne(mappedBy = "account")
+    private PaymentDetailsEntity paymentDetails;
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<OrderEntity> orders = new ArrayList<OrderEntity>();
 
@@ -35,21 +35,23 @@ public class AccountEntity {
         this.id = id;
     }
 
-    public AccountEntity(Integer id, String name, boolean isClosed, Date opened, Date closed, WebUserEntity user) {
+    public AccountEntity(String name, boolean isClosed, Date opened, Date closed, WebUserEntity user, PaymentDetailsEntity paymentDetails) {
+        this.name = name;
+        this.isClosed = isClosed;
+        this.opened = opened;
+        this.closed = closed;
+        this.user = user;
+        this.paymentDetails = paymentDetails;
+    }
+
+    public AccountEntity(Integer id, String name, boolean isClosed, Date opened, Date closed, WebUserEntity user, PaymentDetailsEntity paymentDetails) {
         this.id = id;
         this.name = name;
         this.isClosed = isClosed;
         this.opened = opened;
         this.closed = closed;
         this.user = user;
-    }
-
-    public AccountEntity(String name, boolean isClosed, Date opened, Date closed, WebUserEntity user) {
-        this.name = name;
-        this.isClosed = isClosed;
-        this.opened = opened;
-        this.closed = closed;
-        this.user = user;
+        this.paymentDetails = paymentDetails;
     }
 
     public Integer getId() {
@@ -96,11 +98,11 @@ public class AccountEntity {
         return user;
     }
 
-    public List<PaymentDetailsEntity> getPaymentDetails() {
+    public PaymentDetailsEntity getPaymentDetails() {
         return paymentDetails;
     }
 
-    public void setPaymentDetails(List<PaymentDetailsEntity> paymentDetails) {
+    public void setPaymentDetails(PaymentDetailsEntity paymentDetails) {
         this.paymentDetails = paymentDetails;
     }
 

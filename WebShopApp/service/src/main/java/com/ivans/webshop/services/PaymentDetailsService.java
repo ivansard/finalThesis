@@ -41,6 +41,11 @@ public class PaymentDetailsService implements IPaymentDetailsService {
         return paymentDetailsRepo.save(paymentDetails);
     }
 
+    @Override
+    public PaymentDetailsEntity addPaymentDetails(PaymentDetailsEntity paymentDetails) {
+        return paymentDetailsRepo.save(paymentDetails);
+    }
+
     public void deletePaymentDetails(Integer paymentDetailsId) throws Exception {
         PaymentDetailsEntity productInDb = paymentDetailsRepo.findById(paymentDetailsId).orElse(null);
         if (productInDb.equals(null)) {

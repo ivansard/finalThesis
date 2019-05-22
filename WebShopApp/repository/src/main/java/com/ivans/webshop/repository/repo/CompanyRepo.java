@@ -10,4 +10,5 @@ import java.util.List;
 public interface CompanyRepo extends JpaRepository<CompanyEntity, Integer> {
 
     CompanyEntity findByName(String companyName);
+
 }
