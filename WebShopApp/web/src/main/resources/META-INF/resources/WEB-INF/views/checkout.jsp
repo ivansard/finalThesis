@@ -79,20 +79,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									><img src="/resources/images/logo.png" alt=""
 								/></a>
 							</div>
-							<div class="menu">
-								<a class="toggleMenu" href="#"
-									><img src="/resources/images/nav.png" alt=""
-								/></a>
-								<ul class="nav" id="nav">
-									<li><a href="/shop">Shop</a></li>
-                                    <li><a href="/">Company</a></li>
-                                    <div class="clear"></div>
-								</ul>
-								<script
-									type="text/javascript"
-									src="/resources/js/responsive-nav.js"
-								></script>
-							</div>
+                            <div class="menu">
+                                  <a class="toggleMenu" href="#"><img src="/resources/images/nav.png" alt="" /></a>
+                                    <ul class="nav" id="nav">
+                                        <li><a href="/shop">Shop</a></li>
+                                        <li><a href="/">Company</a></li>
+
+                                        <c:choose>
+                                            <c:when test="${sessionScope.loggedUser == null}">
+                                                <li><a href="/login">Login</a></li>
+                                                <li><a href="/register">Register</a></li>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <li><a href="/profile">Profile</a></li>
+                                                <li><a href="/users/logout">Log Out</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <script type="text/javascript" src="/resources/js/responsive-nav.js"></script>
+                            </div>
 							<div class="clear"></div>
 						</div>
 						<div class="header_right">
@@ -162,15 +170,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="container">
                     <c:choose>
                         <c:when test="${sessionScope.cart == null}">
-                            <h4 class="title">Shopping cart is empty</h4>
-                            <p class="cart">
-                                You must be logged in order to create a shopping cart!<br />Click<a
-                                    href="/login"
-                                >
-                                    here</a
-                                >
-                                to login!
-                            </p>
+                            <h2 class="title">Shopping cart is empty</h2>
+
+                            <div>
+                                <p>You must be logged in, in order to create a shopping cart</p>
+                                <form method="GET" action="/login">
+                                    <input type="submit" name="Submit" class="btn btn-dark" value="Login"><div class="clear"></div>
+                                </form>
+                            </div>
                         </c:when>
 
                         <c:otherwise>
@@ -192,26 +199,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                  </c:forEach>
                               </tbody>
                             </table>
-                            <p class="cart">
-                                To continue shopping<br />Click<a
-                                    href="/shop"
-                                >
-                                    here</a
-                                >
-                            </p>
-                            <br />
-                             <p class="cart">
-                                To checkout your cart<br />Click<a
-                                    href="/purchase"
-                                >
-                                    here</a
-                                >
-                            </p>
+                            <div>
+                                <p>To continue shopping click here</p>
+                                <form method="GET" action="/shop">
+                                    <input type="submit" name="Submit" class="btn btn-dark" value="Continue Shopping"><div class="clear"></div>
+                                </form>
+                            </div>
+                            <div>
+                                <p>To confirm your purchase click here</p>
+                                <form method="POST" action="/placeOrder">
+                                    <input type="submit" name="Submit" class="btn btn-dark" value="Confirm Purchase"><div class="clear"></div>
+                                </form>
+                            </div>
                         </c:otherwise>
                     </c:choose>
-                    <form method="POST" action="/placeOrder">
-                        <input type="submit" name="Submit" class="button" value="Login"><div class="clear"></div>
-                    </form>
 				</div>
 			</div>
 		</div>
@@ -281,10 +282,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 					<div class="copy">
-						<p>
-							© 2014 Template by
-							<a href="http://w3layouts.com" target="_blank">w3layouts</a>
-						</p>
 					</div>
 					<dl id="sample" class="dropdown">
 						<dt>

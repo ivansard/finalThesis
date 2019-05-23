@@ -232,10 +232,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 					<div class="copy">
-						<p>
-							© 2014 Template by
-							<a href="http://w3layouts.com" target="_blank">w3layouts</a>
-						</p>
 					</div>
 					<dl id="sample" class="dropdown">
 						<dt>

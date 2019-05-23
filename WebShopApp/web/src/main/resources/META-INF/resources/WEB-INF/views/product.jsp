@@ -108,23 +108,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								/></a>
 							</div>
 							<div class="menu">
-								<a class="toggleMenu" href="#"
-									><img src="/resources/images/nav.png" alt=""
-								/></a>
-								<ul class="nav" id="nav">
-									<li class="current"><a href="shop.html">Shop</a></li>
-									<li><a href="team.html">Team</a></li>
-									<li><a href="shop.html">Events</a></li>
-									<li><a href="experiance.html">Experiance</a></li>
-									<li><a href="shop.html">Company</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<div class="clear"></div>
-								</ul>
-								<script
-									type="text/javascript"
-									src="/resources/js/responsive-nav.js"
-								></script>
-							</div>
+                              <a class="toggleMenu" href="#"><img src="/resources/images/nav.png" alt="" /></a>
+                                <ul class="nav" id="nav">
+                                    <li><a href="/shop">Shop</a></li>
+                                    <li><a href="/">Company</a></li>
+
+                                    <c:choose>
+                                        <c:when test="${sessionScope.loggedUser == null}">
+                                            <li><a href="/login">Login</a></li>
+                                            <li><a href="/register">Register</a></li>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <li><a href="/profile">Profile</a></li>
+                                            <li><a href="/users/logout">Log Out</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <div class="clear"></div>
+                                </ul>
+                                <script type="text/javascript" src="/resources/js/responsive-nav.js"></script>
+                            </div>
 							<div class="clear"></div>
 						</div>
 						<div class="header_right">
@@ -281,70 +285,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									aliquip ex ea commodo consequat. Duis autem vel eum iriure
 									dolor in hendrerit in vulputate velit esse
 								</p>
-								<ul class="product-colors">
-									<h3>available Colors</h3>
-									<li>
-										<a class="color1" href="#"><span> </span></a>
-									</li>
-									<li>
-										<a class="color2" href="#"><span> </span></a>
-									</li>
-									<li>
-										<a class="color3" href="#"><span> </span></a>
-									</li>
-									<li>
-										<a class="color4" href="#"><span> </span></a>
-									</li>
-									<li>
-										<a class="color5" href="#"><span> </span></a>
-									</li>
-									<li>
-										<a class="color6" href="#"><span> </span></a>
-									</li>
-									<div class="clear"></div>
-								</ul>
 								<div class="btn_form">
-									<form>
+									<form method="POST" value="/checkout">
 										<input type="submit" value="buy now" title="" />
 									</form>
-								</div>
-								<ul class="add-to-links">
-									<li>
-										<img src="/resources/images/wish.png" alt="" /><a href="#"
-											>Add to wishlist</a
-										>
-									</li>
-								</ul>
-								<div class="social_buttons">
-									<h4>95 Items</h4>
-									<button
-										type="button"
-										class="btn1 btn1-default1 btn1-twitter"
-										onclick=""
-									>
-										<i class="icon-twitter"></i> Tweet
-									</button>
-									<button
-										type="button"
-										class="btn1 btn1-default1 btn1-facebook"
-										onclick=""
-									>
-										<i class="icon-facebook"></i> Share
-									</button>
-									<button
-										type="button"
-										class="btn1 btn1-default1 btn1-google"
-										onclick=""
-									>
-										<i class="icon-google"></i> Google+
-									</button>
-									<button
-										type="button"
-										class="btn1 btn1-default1 btn1-pinterest"
-										onclick=""
-									>
-										<i class="icon-pinterest"></i> Pinterest
-									</button>
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -525,10 +469,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 					<div class="copy">
-						<p>
-							© 2014 Template by
-							<a href="http://w3layouts.com" target="_blank">w3layouts</a>
-						</p>
 					</div>
 					<dl id="sample" class="dropdown">
 						<dt>

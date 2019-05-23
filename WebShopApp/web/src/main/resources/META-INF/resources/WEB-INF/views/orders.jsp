@@ -79,20 +79,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									><img src="/resources/images/logo.png" alt=""
 								/></a>
 							</div>
-							<div class="menu">
-								<a class="toggleMenu" href="#"
-									><img src="/resources/images/nav.png" alt=""
-								/></a>
-								<ul class="nav" id="nav">
-									<li><a href="/shop">Shop</a></li>
-                                    <li><a href="/">Company</a></li>
-                                    <div class="clear"></div>
-								</ul>
-								<script
-									type="text/javascript"
-									src="/resources/js/responsive-nav.js"
-								></script>
-							</div>
+                            <div class="menu">
+                                  <a class="toggleMenu" href="#"><img src="/resources/images/nav.png" alt="" /></a>
+                                    <ul class="nav" id="nav">
+                                        <li><a href="/shop">Shop</a></li>
+                                        <li><a href="/">Company</a></li>
+
+                                        <c:choose>
+                                            <c:when test="${sessionScope.loggedUser == null}">
+                                                <li><a href="/login">Login</a></li>
+                                                <li><a href="/register">Register</a></li>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <li><a href="/profile">Profile</a></li>
+                                                <li><a href="/users/logout">Log Out</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <script type="text/javascript" src="/resources/js/responsive-nav.js"></script>
+                            </div>
 							<div class="clear"></div>
 						</div>
 						<div class="header_right">
@@ -267,10 +275,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 					<div class="copy">
-						<p>
-							© 2014 Template by
-							<a href="http://w3layouts.com" target="_blank">w3layouts</a>
-						</p>
 					</div>
 					<dl id="sample" class="dropdown">
 						<dt>

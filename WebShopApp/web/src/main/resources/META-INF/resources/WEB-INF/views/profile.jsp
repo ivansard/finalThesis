@@ -5,6 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 <html>
 	<head>
 		<title>Free Snow Bootstrap Website Template | Checkout :: w3layouts</title>
@@ -66,23 +68,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="logo">
                                 <a href="/"><img src="/resources/images/logo.png" alt=""/></a>
 							</div>
-							<div class="menu">
-								<a class="toggleMenu" href="#"
-									><img src="resources/images/nav.png" alt=""
-								/></a>
-								<ul class="nav" id="nav">
-									<li><a href="/shop">Shop</a></li>
-									<li><a href="/">Company</a></li>
-									<div class="clear"></div>
-                                    <li><a href="/profile">Profile</a></li>
-                                    <li><a href="/users/logout">Log Out</a></li>
+                            <div class="menu">
+                                  <a class="toggleMenu" href="#"><img src="/resources/images/nav.png" alt="" /></a>
+                                    <ul class="nav" id="nav">
+                                        <li><a href="/shop">Shop</a></li>
+                                        <li><a href="/">Company</a></li>
 
-								</ul>
-								<script
-									type="text/javascript"
-									src="resources/js/responsive-nav.js"
-								></script>
-							</div>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.loggedUser == null}">
+                                                <li><a href="/login">Login</a></li>
+                                                <li><a href="/register">Register</a></li>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <li><a href="/profile">Profile</a></li>
+                                                <li><a href="/users/logout">Log Out</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <script type="text/javascript" src="/resources/js/responsive-nav.js"></script>
+                            </div>
 							<div class="clear"></div>
 						</div>
 						<div class="header_right">
@@ -153,11 +160,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h1 class="title">Your Profile Page</h1>
 					<hr />
 					<h3 class="title">Manage payment options</h3>
-					<a href="/paymentDetails" class="btn btn-dark">View</a>
-                    <a href="http://google.com" class="btn btn-dark">Add</a>
+					<c:choose>
+                        <c:when test="${sessionScope.account.paymentDetails == null}">
+                            <a href="/paymentDetails" class="btn btn-dark">Add payment details</a>
+                        </c:when>
+
+                        <c:otherwise>
+                             <a href="/paymentDetails" class="btn btn-dark">Update payment details</a>
+                        </c:otherwise>
+                    </c:choose>
 					<h3 class="title">Manage your orders</h3>
-                    <a href="http://google.com" class="btn btn-dark">View</a>
-                    <a href="http://google.com" class="btn btn-dark">Add</a>
+                    <a href="/orders" class="btn btn-dark">View</a>
 				</div>
 			</div>
 		</div>
@@ -227,10 +240,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="row footer_bottom">
 					<div class="copy">
-						<p>
-							© 2014 Template by
-							<a href="http://w3layouts.com" target="_blank">w3layouts</a>
-						</p>
 					</div>
 					<dl id="sample" class="dropdown">
 						<dt>
