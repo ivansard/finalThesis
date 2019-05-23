@@ -22,12 +22,8 @@ public class PaymentEntity {
     private PaymentDetailsEntity paymentDetails;
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setId(Integer id) {

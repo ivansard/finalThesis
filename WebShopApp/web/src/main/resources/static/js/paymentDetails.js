@@ -35,21 +35,22 @@ cardNumber.keyup(function() {
 	}
 });
 
-confirmButton.click(function(e) {
+var paymentForm = document.getElementById("paymentForm");
 
-	var isCardValid = $.payform.validateCardNumber(cardNumber.val());
-	var isCvvValid = $.payform.validateCardCVC(CVV.val());
+paymentForm.addEventListener("submit", function(e) {
+    var isCardValid = $.payform.validateCardNumber(cardNumber.val());
+    var isCvvValid = $.payform.validateCardCVC(CVV.val());
 
-	if (owner.val().length < 5) {
-	    e.preventDefault();
-		alert('Wrong owner name');
-	} else if (!isCardValid) {
-	    e.preventDefault();
-		alert('Wrong card number');
-	} else if (!isCvvValid) {
-	    e.preventDefault();
-		alert('Wrong CVV');
-	} else {
-		this.submit(); 
-	}
-});
+    if (owner.val().length < 5) {
+        e.preventDefault();
+        alert('Wrong owner name');
+    } else if (!isCardValid) {
+        e.preventDefault();
+        alert('Wrong card number');
+    } else if (!isCvvValid) {
+        e.preventDefault();
+        alert('Wrong CVV');
+    } else {
+   		this.submit();
+    }
+})

@@ -151,7 +151,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <h1>Payment Details</h1>
                                 </div>
                                 <div class="payment">
-                                    <form method="POST" action="/paymentDetails">
+                                    <form method="POST" action="/paymentDetails" id="paymentForm">
                                         <div class="form-group owner">
                                             <label for="owner">Owner</label>
                                             <input type="text" class="form-control" id="owner">
