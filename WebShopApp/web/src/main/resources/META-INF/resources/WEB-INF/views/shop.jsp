@@ -188,7 +188,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<span class="sale-label">Sale!</span>
 									</span>
 									<div class="shop_desc">
-										<h3><a href="#">aliquam volutp</a></h3>
+										<h3><a href="#">${product.name}</a></h3>
 										<p>Lorem ipsum consectetuer adipiscing</p>
 										<span class="reducedfrom">$${product.price}</span>
 										<span class="actual">$${product.discountPrice}</span><br />
