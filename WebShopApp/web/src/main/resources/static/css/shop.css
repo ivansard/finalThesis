@@ -1,0 +1,8 @@
+.searchDiv {
+	padding-bottom: 5%;
+	text-align: center;
+}
+
+.searchDiv > input{
+    width: 70%;
+}

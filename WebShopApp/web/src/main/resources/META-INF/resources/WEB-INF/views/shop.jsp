@@ -12,6 +12,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<title>Free Snow Bootstrap Website Template | Shop :: w3layouts</title>
 		<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<link href="resources/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="resources/css/shop.css" rel="stylesheet" type="text/css" />
+
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -148,29 +150,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-		<div class="header">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="menu">
-							<ul class="nav" id="nav">
-								<li class="current"><a href="shop.html">Shop</a></li>
-								<li><a href="team.html">Company</a></li>
-								<li><a href="experiance.html">Category</a></li>
-								<div class="clear"></div>
-							</ul>
-							<script
-								type="text/javascript"
-								src="resources/js/responsive-nav.js"
-							></script>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="main">
 			<div class="shop_top">
+			    <div class="container">
+			        <div class="searchDiv">
+			            <h3>Search for products</h3>
+			            <input id="searchInput" type="text" placeholder="Insert search term here...">
+			        </div>
+			    </div>
 				<div class="container">
 					<div class="row shop_box-top">
 						<c:forEach items="${products}" var="product">
@@ -188,7 +175,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<span class="sale-label">Sale!</span>
 									</span>
 									<div class="shop_desc">
-										<h3><a href="#">${product.name}</a></h3>
+										<h3><a href="#" class="product_name">${product.name}</a></h3>
 										<p>Lorem ipsum consectetuer adipiscing</p>
 										<span class="reducedfrom">$${product.price}</span>
 										<span class="actual">$${product.discountPrice}</span><br />
@@ -337,6 +324,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
+        <script src="resources/js/shop.js"></script>
 	</body>
 </html>
 
