@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2019-05-15T20:24:35+0200",
-    comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_131 (Oracle Corporation)"
+    date = "2019-09-06T21:05:43+0200",
+    comments = "version: 1.3.0.Final, compiler: javac, environment: Java 11.0.3 (JetBrains s.r.o)"
 )
 @Component
 public class CompanyUserMapperImpl implements CompanyUserMapper {
@@ -23,6 +23,7 @@ public class CompanyUserMapperImpl implements CompanyUserMapper {
 
         CompanyUserDTO companyUserDTO = new CompanyUserDTO();
 
+        companyUserDTO.setPassword( companyUser.getPassword() );
         companyUserDTO.setUsername( companyUser.getUsername() );
         if ( companyUser.getState() != null ) {
             companyUserDTO.setState( companyUser.getState().name() );

@@ -10,6 +10,8 @@ public class LineItemEntity {
     private
     Integer id;
     private int quantity;
+    private double price;
+    private double discount;
     private double totalPrice;
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -80,5 +82,21 @@ public class LineItemEntity {
 
     public void setOrder(OrderEntity order) {
         this.order = order;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 }

@@ -83,12 +83,23 @@ public class ApplicationController {
             return "error";
         }
     }
+//
+//    @RequestMapping("/shop")
+//    public String renderShopPage(HttpServletRequest request) {
+//
+//        List<ProductDTO> allProducts = productService.getAllProducts();
+//        request.setAttribute("products", allProducts);
+//
+//        return "shop";
+//    }
 
-    @RequestMapping("/shop")
-    public String renderShopPage(HttpServletRequest request) {
+
+    @GetMapping("/shop/{pagination}")
+    public String renderShopPage(HttpServletRequest request, @PathVariable Integer pagination) {
 
         List<ProductDTO> allProducts = productService.getAllProducts();
         request.setAttribute("products", allProducts);
+        request.setAttribute("pagination", pagination);
 
         return "shop";
     }

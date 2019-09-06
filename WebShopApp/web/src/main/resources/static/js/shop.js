@@ -8,10 +8,10 @@ searchInputField.addEventListener('keyup', event => {
 
 		const input = event.target.value;
 
-		if (productName.toLowerCase().includes(input)) {
-			productDivs[i].style.display = '';
+		if (productName.toLowerCase().includes(input) || productName.includes(input) || productName.toUpperCase()includes(input)) {
+			productDivs[i].classList.remove('hidden');
 		} else {
-            productDivs[i].style.display = 'none';
+            productDivs[i].classList.add('hidden');
 		}
 	}
 });

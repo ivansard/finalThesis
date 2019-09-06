@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2019-05-15T20:24:35+0200",
-    comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_131 (Oracle Corporation)"
+    date = "2019-09-06T21:05:43+0200",
+    comments = "version: 1.3.0.Final, compiler: javac, environment: Java 11.0.3 (JetBrains s.r.o)"
 )
 @Component
 public class LineItemMapperImpl implements LineItemMapper {
@@ -26,8 +26,6 @@ public class LineItemMapperImpl implements LineItemMapper {
         LineItemDTO lineItemDTO = new LineItemDTO();
 
         lineItemDTO.setQuantity( lineItem.getQuantity() );
-        lineItemDTO.setDiscount( lineItem.getDiscount() );
-        lineItemDTO.setPrice( lineItem.getPrice() );
         lineItemDTO.setProduct( productEntityToProductDTO( lineItem.getProduct() ) );
 
         lineItemDTO.setTotalPrice( lineItem.getQuantity() * lineItem.getPrice() * lineItem.getDiscount() );
@@ -56,6 +54,8 @@ public class LineItemMapperImpl implements LineItemMapper {
 
         ProductDTO productDTO = new ProductDTO();
 
+        productDTO.setId( productEntity.getId() );
+        productDTO.setImageUrl( productEntity.getImageUrl() );
         productDTO.setName( productEntity.getName() );
         productDTO.setPrice( productEntity.getPrice() );
         productDTO.setTax( productEntity.getTax() );

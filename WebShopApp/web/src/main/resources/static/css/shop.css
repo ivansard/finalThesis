@@ -3,6 +3,14 @@
 	text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
+.pagination-nav {
+    text-align: center
+}
+
 .searchDiv > input{
     width: 70%;
 }

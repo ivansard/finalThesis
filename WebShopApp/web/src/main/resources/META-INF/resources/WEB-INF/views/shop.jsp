@@ -7,12 +7,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 	<head>
 		<title>Free Snow Bootstrap Website Template | Shop :: w3layouts</title>
-		<link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
-		<link href="resources/css/style.css" rel="stylesheet" type="text/css" />
-		<link href="resources/css/shop.css" rel="stylesheet" type="text/css" />
+		<link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="/resources/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="/resources/css/shop.css" rel="stylesheet" type="text/css" />
 
 		<meta
 			name="viewport"
@@ -24,10 +25,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			rel="stylesheet"
 			type="text/css"
 		/>
+
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<script type="application/x-javascript">
 			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 		</script>
-		<script src="resources/js/jquery.min.js"></script>
+		<script src="/resources/js/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.dropdown img.flag').addClass('flagvisibility');
@@ -68,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-12">
 						<div class="header-left">
 							<div class="logo">
-								<a href="index.html"><img src="resources/images/logo.png" alt=""/></a>
+								<a href="index.html"><img src="/resources/images/logo.png" alt=""/></a>
 							</div>
                             <div class="menu">
                                   <a class="toggleMenu" href="#"><img src="/resources/images/nav.png" alt="" /></a>
@@ -112,8 +116,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div>
 							</div>
 							<!----search-scripts---->
-							<script src="resources/js/classie.js"></script>
-							<script src="resources/js/uisearch.js"></script>
+							<script src="/resources/js/classie.js"></script>
+							<script src="/resources/js/uisearch.js"></script>
 							<script>
 								new UISearch(document.getElementById('sb-search'));
 							</script>
@@ -122,11 +126,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a class="active-icon c1" href="#"> </a>
 									<ul class="sub-icon1 list">
 										<div class="product_control_buttons">
-											<a href="#"><img src="resources/images/edit.png" alt=""/></a>
-											<a href="#"><img src="resources/images/close_edit.png" alt=""/></a>
+											<a href="#"><img src="/resources/images/edit.png" alt=""/></a>
+											<a href="#"><img src="/resources/images/close_edit.png" alt=""/></a>
 										</div>
 										<div class="clear"></div>
-										<li class="list_img"><img src="resources/images/1.jpg" alt="" /></li>
+										<li class="list_img"><img src="/resources/images/1.jpg" alt="" /></li>
 										<li class="list_desc">
 											<h4><a href="#">velit esse molestie</a></h4>
 											<span class="actual">1 x $12.00</span>
@@ -160,34 +164,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			    </div>
 				<div class="container">
 					<div class="row shop_box-top">
-						<c:forEach items="${products}" var="product">
-							<div class="col-md-3 shop_box">
-								<a href="single.html">
-									<img
-										src="${product.imageUrl}"
-										class="img-responsive"
-										alt=""
-									/>
-									<span class="new-box">
-										<span class="new-label">New</span>
-									</span>
-									<span class="sale-box">
-										<span class="sale-label">Sale!</span>
-									</span>
-									<div class="shop_desc">
-										<h3><a href="#" class="product_name">${product.name}</a></h3>
-										<p>Lorem ipsum consectetuer adipiscing</p>
-										<span class="reducedfrom">$${product.price}</span>
-										<span class="actual">$${product.discountPrice}</span><br />
-										<ul class="buttons">
-											<li class="shop_btn"><a href="/products/${product.id}">View More</a></li>
-											<div class="clear"></div>
-										</ul>
-									</div>
-								</a>
-							</div>
+						<c:forEach items="${products}" var="product" varStatus="loop">
+						    <c:if test="${loop.count > 4 * (pagination-1) && loop.count <= 4 * pagination}">
+                                <div class="col-md-3 shop_box">
+                                    <a href="single.html">
+                                        <img
+                                            src="${product.imageUrl}"
+                                            class="img-responsive"
+                                            alt=""
+                                        />
+                                        <span class="new-box">
+                                            <span class="new-label">New</span>
+                                        </span>
+                                        <span class="sale-box">
+                                            <span class="sale-label">Sale!</span>
+                                        </span>
+                                        <div class="shop_desc">
+                                            <h3><a href="#" class="product_name">${product.name}</a></h3>
+                                            <p>Lorem ipsum consectetuer adipiscing</p>
+                                            <span class="reducedfrom">$${product.price}</span>
+                                            <span class="actual">$${product.discountPrice}</span><br />
+                                            <ul class="buttons">
+                                                <li class="shop_btn"><a href="/products/${product.id}">View More</a></li>
+                                                <div class="clear"></div>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </div>
+						    </c:if>
 						</c:forEach>
 					</div>
+					<nav aria-label="Page navigation" class="pagination-nav">
+                        <ul class="pagination">
+                            <c:set var="counter" scope="application" value="1"/>
+                            <c:forEach begin="1" end="${fn:length(products) / 4}" varStatus="loop">
+                                <c:choose>
+                                    <c:when test="${loop.count == pagination}">
+                                        <li class="active"><a href="/shop/${loop.count}">${loop.count}</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li ><a href="/shop/${loop.count}">${loop.count}</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+
+						    </c:forEach>
+                        </ul>
+                    </nav>
 				</div>
 			</div>
 		</div>
@@ -268,7 +290,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Australia<img
 											class="flag"
-											src="resources/images/as.png"
+											src="/resources/images/as.png"
 											alt=""
 										/><span class="value">AS</span></a
 									>
@@ -277,7 +299,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Sri Lanka<img
 											class="flag"
-											src="resources/images/srl.png"
+											src="/resources/images/srl.png"
 											alt=""
 										/><span class="value">SL</span></a
 									>
@@ -286,7 +308,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Newziland<img
 											class="flag"
-											src="resources/images/nz.png"
+											src="/resources/images/nz.png"
 											alt=""
 										/><span class="value">NZ</span></a
 									>
@@ -295,7 +317,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>Pakistan<img
 											class="flag"
-											src="resources/images/pk.png"
+											src="/resources/images/pk.png"
 											alt=""
 										/><span class="value">Pk</span></a
 									>
@@ -304,7 +326,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>United Kingdom<img
 											class="flag"
-											src="resources/images/uk.png"
+											src="/resources/images/uk.png"
 											alt=""
 										/><span class="value">UK</span></a
 									>
@@ -313,7 +335,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#"
 										>United States<img
 											class="flag"
-											src="resources/images/us.png"
+											src="/resources/images/us.png"
 											alt=""
 										/><span class="value">US</span></a
 									>
@@ -324,7 +346,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-        <script src="resources/js/shop.js"></script>
+        <script src="/resources/js/shop.js"></script>
 	</body>
 </html>
 

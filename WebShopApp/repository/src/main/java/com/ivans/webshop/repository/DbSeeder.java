@@ -46,6 +46,21 @@ public class DbSeeder implements CommandLineRunner {
         ProductEntity p2 = new ProductEntity("Ski Hoodie","/resources/images/pic5.jpg", 35, 0.4, 0.1, null, com2);
         ProductEntity p3 = new ProductEntity("Ski Set","/resources/images/pic1.jpg", 120, 0.4, 0.1, null, com3);
 
+        ProductEntity p5 = new ProductEntity("Snowboard 1", "/resources/images/pic8.jpg", 290, 0.4, 0.1, null, com1);
+        ProductEntity p6 = new ProductEntity("Snowboard 2","/resources/images/pic12.jpg", 170, 0.4, 0.1, null, com1);
+        ProductEntity p7 = new ProductEntity("Ski Hoodie","/resources/images/pic5.jpg", 35, 0.4, 0.1, null, com2);
+        ProductEntity p8 = new ProductEntity("Ski Set","/resources/images/pic1.jpg", 120, 0.4, 0.1, null, com3);
+
+        ProductEntity p9 = new ProductEntity("Snowboard 1", "/resources/images/pic8.jpg", 290, 0.4, 0.1, null, com1);
+        ProductEntity p10 = new ProductEntity("Snowboard 2","/resources/images/pic12.jpg", 170, 0.4, 0.1, null, com1);
+        ProductEntity p11 = new ProductEntity("Ski Hoodie","/resources/images/pic5.jpg", 35, 0.4, 0.1, null, com2);
+        ProductEntity p12 = new ProductEntity("Ski Set","/resources/images/pic1.jpg", 120, 0.4, 0.1, null, com3);
+
+        ProductEntity p13 = new ProductEntity("Snowboard 1", "/resources/images/pic8.jpg", 290, 0.4, 0.1, null, com1);
+        ProductEntity p14 = new ProductEntity("Snowboard 2","/resources/images/pic12.jpg", 170, 0.4, 0.1, null, com1);
+        ProductEntity p15 = new ProductEntity("Ski Hoodie","/resources/images/pic5.jpg", 35, 0.4, 0.1, null, com2);
+        ProductEntity p16 = new ProductEntity("Ski Set","/resources/images/pic1.jpg", 120, 0.4, 0.1, null, com3);
+
         OrderEntity o1 = new OrderEntity(new Date(), null, OrderStatus.NEW, 3000, new AccountEntity(3));
 
         c1.setCompany(com1);
@@ -65,7 +80,19 @@ public class DbSeeder implements CommandLineRunner {
         products.add(p1);
         products.add(p2);
         products.add(p3);
+        products.add(p5);
         products.add(p4);
+        products.add(p6);
+        products.add(p7);
+        products.add(p9);
+        products.add(p8);
+        products.add(p11);
+        products.add(p12);
+        products.add(p10);
+        products.add(p13);
+        products.add(p14);
+        products.add(p15);
+        products.add(p16);
 
         companyRepo.saveAll(companies);
         userRepo.saveAll(users);

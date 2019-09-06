@@ -3,15 +3,13 @@ package com.ivans.webshop.mappers;
 import com.ivans.webshop.dto.CompanyDTO;
 import com.ivans.webshop.dto.LineItemDTO;
 import com.ivans.webshop.dto.OrderDTO;
-import com.ivans.webshop.dto.PaymentDTO;
-import com.ivans.webshop.dto.PaymentDetailsDTO;
 import com.ivans.webshop.dto.ProductDTO;
 import com.ivans.webshop.repository.entity.CompanyEntity;
 import com.ivans.webshop.repository.entity.LineItemEntity;
 import com.ivans.webshop.repository.entity.OrderEntity;
-import com.ivans.webshop.repository.entity.PaymentDetailsEntity;
-import com.ivans.webshop.repository.entity.PaymentEntity;
 import com.ivans.webshop.repository.entity.ProductEntity;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -19,8 +17,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2019-05-15T20:24:35+0200",
-    comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_131 (Oracle Corporation)"
+    date = "2019-09-06T21:05:43+0200",
+    comments = "version: 1.3.0.Final, compiler: javac, environment: Java 11.0.3 (JetBrains s.r.o)"
 )
 @Component
 public class OrderMapperImpl implements OrderMapper {
@@ -33,12 +31,15 @@ public class OrderMapperImpl implements OrderMapper {
 
         OrderDTO orderDTO = new OrderDTO();
 
-        orderDTO.setOrdered( order.getOrdered() );
-        orderDTO.setShipped( order.getShipped() );
+        if ( order.getOrdered() != null ) {
+            orderDTO.setOrdered( LocalDateTime.ofInstant( order.getOrdered().toInstant(), ZoneOffset.UTC ).toLocalDate() );
+        }
+        if ( order.getShipped() != null ) {
+            orderDTO.setShipped( LocalDateTime.ofInstant( order.getShipped().toInstant(), ZoneOffset.UTC ).toLocalDate() );
+        }
         orderDTO.setStatus( order.getStatus() );
         orderDTO.setTotal( order.getTotal() );
         orderDTO.setLineItems( lineItemEntityListToLineItemDTOList( order.getLineItems() ) );
-        orderDTO.setPayment( paymentEntityToPaymentDTO( order.getPayment() ) );
 
         return orderDTO;
     }
@@ -64,6 +65,8 @@ public class OrderMapperImpl implements OrderMapper {
 
         ProductDTO productDTO = new ProductDTO();
 
+        productDTO.setId( productEntity.getId() );
+        productDTO.setImageUrl( productEntity.getImageUrl() );
         productDTO.setName( productEntity.getName() );
         productDTO.setPrice( productEntity.getPrice() );
         productDTO.setTax( productEntity.getTax() );
@@ -84,8 +87,7 @@ public class OrderMapperImpl implements OrderMapper {
         LineItemDTO lineItemDTO = new LineItemDTO();
 
         lineItemDTO.setQuantity( lineItemEntity.getQuantity() );
-        lineItemDTO.setDiscount( lineItemEntity.getDiscount() );
-        lineItemDTO.setPrice( lineItemEntity.getPrice() );
+        lineItemDTO.setTotalPrice( lineItemEntity.getTotalPrice() );
         lineItemDTO.setProduct( productEntityToProductDTO( lineItemEntity.getProduct() ) );
 
         return lineItemDTO;
@@ -102,33 +104,5 @@ public class OrderMapperImpl implements OrderMapper {
         }
 
         return list1;
-    }
-
-    protected PaymentDetailsDTO paymentDetailsEntityToPaymentDetailsDTO(PaymentDetailsEntity paymentDetailsEntity) {
-        if ( paymentDetailsEntity == null ) {
-            return null;
-        }
-
-        PaymentDetailsDTO paymentDetailsDTO = new PaymentDetailsDTO();
-
-        paymentDetailsDTO.setCardNumber( paymentDetailsEntity.getCardNumber() );
-        paymentDetailsDTO.setExpirationDate( paymentDetailsEntity.getExpirationDate() );
-        paymentDetailsDTO.setSecurityCode( paymentDetailsEntity.getSecurityCode() );
-
-        return paymentDetailsDTO;
-    }
-
-    protected PaymentDTO paymentEntityToPaymentDTO(PaymentEntity paymentEntity) {
-        if ( paymentEntity == null ) {
-            return null;
-        }
-
-        PaymentDTO paymentDTO = new PaymentDTO();
-
-        paymentDTO.setTotal( paymentEntity.getTotal() );
-        paymentDTO.setDetails( paymentEntity.getDetails() );
-        paymentDTO.setPaymentDetails( paymentDetailsEntityToPaymentDetailsDTO( paymentEntity.getPaymentDetails() ) );
-
-        return paymentDTO;
     }
 }
